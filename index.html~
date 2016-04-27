@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Liao Yuan-Hong</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Homepage and blog">
+    <meta name="author" content="Liao Yuan-Hong">
+    
+    <link rel="canonical" href="https://andrewliao11.github.io/">
+    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Avi Singh" href="/feed.xml" />
+
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="/css/pixyll.css?201602132020" type="text/css">
+
+    <!-- Fonts -->
+    <link href='//fonts.googleapis.com/css?family=Merriweather:900,900italic,300,300italic' rel='stylesheet' type='text/css'>
+    <link href='//fonts.googleapis.com/css?family=Lato:900,300' rel='stylesheet' type='text/css'>
+    
+      <link href="//maxcdn.bootstrapcdn.com/font-awesome/4.4.0/css/font-awesome.min.css" rel="stylesheet">
+    
+
+    <!-- Verifications -->
+    
+
+    <!-- Open Graph -->
+    <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
+    <meta property="og:locale" content="en_US">
+    <meta property="og:type" content="article">
+    <meta property="og:title" content="Liao Yuan-Hong">
+    <meta property="og:description" content="Homepage and blog">
+    <meta property="og:url" content="https://andrewliao11.github.io/index.html">
+    <meta property="og:site_name" content="Liao Yuan-Hong">
+
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary" />
+    
+        <meta name="twitter:site" content="@Andrew14146174" />
+    
+    <meta name="twitter:title" content="Liao Yuan-Hong" />
+    <meta name="twitter:description" content="Homepage and blog" />
+    <meta name="twitter:url" content="https://andrewliao11.github.io/index.html" />
+
+    <!-- Icons -->
+    <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
+    <link rel="apple-touch-icon" sizes="114x114" href="/apple-icon-114x114.png">
+    <link rel="apple-touch-icon" sizes="72x72" href="/apple-icon-72x72.png">
+    <link rel="apple-touch-icon" sizes="144x144" href="/apple-icon-144x144.png">
+    <link rel="apple-touch-icon" sizes="60x60" href="/apple-icon-60x60.png">
+    <link rel="apple-touch-icon" sizes="120x120" href="/apple-icon-120x120.png">
+    <link rel="apple-touch-icon" sizes="76x76" href="/apple-icon-76x76.png">
+    <link rel="apple-touch-icon" sizes="152x152" href="/apple-icon-152x152.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="/apple-icon-180x180.png">
+    <link rel="icon" type="image/png" href="/favicon-160x160.png" sizes="160x160">
+    <link rel="icon" type="image/png" href="/favicon-96x96.png" sizes="96x96">
+    <link rel="icon" type="image/png" href="/favicon-16x16.png" sizes="16x16">
+    <link rel="icon" type="image/png" href="/favicon-32x32.png" sizes="32x32">
+
+    
+    <script type="text/javascript">
+      var _gaq = _gaq || [];
+      _gaq.push(['_setAccount', 'UA-63278661-1']);
+      _gaq.push(['_trackPageview']);
+      (function() {
+        var ga = document.createElement('script'); ga.type = 'text/javascript'; ga.async = true;
+        ga.src = ('https:' == document.location.protocol ? 'https://ssl' : 'http://www') + '.google-analytics.com/ga.js';
+        var s = document.getElementsByTagName('script')[0]; s.parentNode.insertBefore(ga, s);
+      })();
+    </script>
+    
+</head>
+
+<body class="site">
+  <div class="site-wrap">
+    <header class="site-header px2 px-responsive">
+  <div class="mt2 wrap">
+    <div class="measure">
+      <a href="https://andrewliao11.github.io" class="site-title"></a>
+      <nav class="site-nav">
+        <a href="/">Home</a>
+<a href="/research/">Research</a>
+<a href="/blog/">Blog</a>
+      </nav>
+      <div class="clearfix" ></div>
+      
+        <div class="social-icons">
+  <div class="left">
+    
+      <a class="fa fa-github" href="https://github.com/andrewliao11"></a>
+    
+    
+    
+    <a class="fa fa-rss" href="/feed.xml"></a>
+    
+      <a class="fa fa-twitter" href="https://twitter.com/Andrew14146174"></a>
+    
+    
+      <a class="fa fa-google-plus" href="https://plus.google.com/+andrewliao11/posts"></a>
+    
+    
+      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/andrewliao11"></a>
+    
+    
+    
+  </div>
+  <div class="right">
+
+    
+    
+    
+  </div>
+</div>
+
+<div class="clearfix">
+    
+      <center> <a class="fa fa-envelope" href="mailto:andrewliao11@gmail.com"></a> andrewliao11@gmail.com <center>
+    
+</div>
+
+    
+
+      
+    </div>
+  </div>
+</header>
+
+
+    <div class="post p2 p-responsive wrap" role="main">
+      <div class="measure">
+        <div class="post">
+  <header class="post-header">
+    <h1 class="nomargintop">Liao Yuan-Hong</h1>
+  </header>
+  <article class="post-content">
+  <!--
+<img style="float: right;" hspace="20" src="/images/bio-photo.jpg" height="350">
+-->
+
+<!--![Alt text](/images/bio-photo.jpg)-->
+<!--
+<p><span class="red"><strong>News:</strong></span> Paper accepted to ICRA 2016!</p>
+-->
+<h2 id="a-namepubsapublications"><a name="pubs"></a>About me</h2>
+
+<p>I am an undergraduate research student at <a href="http://nthu-en.web.nthu.edu.tw/bin/home.php">National Tsing Hua University</a>,  majoring in Electrical Engineering. Though most of the lectures I took is EE-related, I’ve learned much more in my project. I have great interest in Computer Science and Machine Learning, especially in Deep Learning</p>
+<p>My project focuses on using the deep learning to solve vision-based tasks. My advisor is <a href="http://aliensunmin.github.io/">Prof. Min Sun</a>. I've been researched on image classification, image detection, video title generation, visual question answering. Learn more in my <a href="https://andrewliao11.github.io/assets/ResearchBackground.pdf">Research Background[PDF]</a>.</p>
+
+<p>I am now a research intern at <a href="https://www.itri.org.tw/">Computational Intelligence Technology Center in Industrial Technology Research Institute(ITRI)</a>. I focus on deep reinforcement learning and our goal is to create an intelligent agent solving general problem.</p>
+
+<p>To follow the trend on deep learning, I have a <a href="andrewliao11.github.io/blog">blog</a> on this website. To share some open source and notes.</p>
+
+<p>My <a href="https://andrewliao11.github.io/assets/CV.pdf">CV [PDF]</a>, last updated March 2016.</p>
+
+<h2 id="a-namepubsapublications"><a name="pubs"></a>Education</h2>
+
+
+
+
+<!--
+|<img src="/images/fusionRNN.png" alt="alt text" width="" height="200">  |  Recurrent Neural Networks for Driver Activity Anticipation via Sensory-Fusion Architecture [[arXiv link]](http://arxiv.org/abs/1509.05016) <br> *Ashesh Jain, **Avi Singh**, Hema S Koppula, Shane Soh, Ashutosh Saxena* <br> ICRA 2016|  
+|<img src="/images/car_setup.jpg" alt="alt text" width="" height="200"> | Brain4Cars: Car That Knows Before You Do via Sensory-Fusion Deep Learning Architecture [[arXiv link]](http://arxiv.org/abs/1601.00740)<br>*Ashesh Jain, Hema S Koppula, Shane Soh, Bharad Raghavan, **Avi Singh**, Ashutosh Saxena*<br>under review at IJRR|
+|<img src="/images/car_sensor.jpg" alt="alt text" width="" height="200"> | <br>Brain4Cars: Sensory-Fusion Recurrent Neural Models for Driver Activity Anticipation [[extended abstract [PDF]]](/assets/baylearn.pdf)<br>*Ashesh Jain, Shane Soh, Bharad Raghvan, **Avi Singh**, Hema S Koppula, Ashutosh Saxena*<br><span class="red">**Full Oral**</span> at [BayLearn 2015](http://www.baylearn.org/)|
+-->
+<!--
+<p>Recurrent Neural Networks for Driver Activity Anticipation via Sensory-Fusion Architecture 
+<br /><em>Ashesh Jain, <strong>Avi Singh</strong>, Hema S Koppula, Shane Soh, Ashutosh Saxena</em>
+<br />ICRA 2016 <a href="http://arxiv.org/abs/1509.05016">[arXiv]</a></p>
+
+<p>Brain4Cars: Car That Knows Before You Do via Sensory-Fusion Deep Learning Architecture 
+<br /><em>Ashesh Jain, Hema S Koppula, Shane Soh, Bharad Raghavan, <strong>Avi Singh</strong>, Ashutosh Saxena</em>
+<br />under review at IJRR <a href="http://arxiv.org/abs/1601.00740">[arXiv]</a></p>
+
+<p>Brain4Cars: Sensory-Fusion Recurrent Neural Models for Driver Activity Anticipation
+<br /><em>Ashesh Jain, Shane Soh, Bharad Raghvan, <strong>Avi Singh</strong>, Hema S Koppula, Ashutosh Saxena</em>
+<br />BayLearn 2015 (<span class="red"><strong>Full Oral</strong></span>) <a href="/assets/baylearn.pdf">[extended abstract]</a></p>
+-->
+<hr />
+
+<p><em>Last updated: 25 Apr 2016</em></p>
+
+  </article>
+</div>
+
+      </div>
+    </div>
+  </div>
+
+  <footer class="center">
+  <div class="measure">
+    <small>
+      Powered by <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://pixyll.com/">Pixyll</a> theme. Hosted on <a href="https://pages.github.com/">Github Pages</a>. <br>
+      © Liao Yuan-Hong
+    </small>
+  </div>
+</footer>
+
+</body>
+</html>
