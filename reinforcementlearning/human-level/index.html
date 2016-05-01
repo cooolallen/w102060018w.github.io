@@ -150,7 +150,7 @@
 
 <p>In this blog, I’ll talk about the red-hot topic: deep reinforcement learning. After the trend of the <a href="https://deepmind.com/alpha-go">AlphaGo</a>. Many people have been stunned by the smartness of the machine, which makes the topic of human versus artificial intelligence rises again. This blog will mainly focus on this work:<a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">Human-level control through deep reinforcement learning</a>, published in Nature. And I'll briefly talked about the recent released open source: <a href="https://gym.openai.com/">gym</a>, release by OpenAI</p>
 
-<p>Before jumping into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us come up with a solution to picking up a good choice. MDP has some components, including state(s), action(a), reward(r), and transition function(T). It has a very important assumption: every move only depends on the current condition, namely P(a_t|s_t). Here's the illustration of MDP:</p>
+<p>Before jumping into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us come up with a solution to picking up a good choice. MDP has some components, including state(s), action(a), reward(r), and transition function(T). It has a very important assumption: every move only depends on the current condition, namely P(a_t|s_t). <br>Here's the illustration of MDP:</p>
 
 <ol>
   <li>State(s): the green circle</li>
@@ -160,11 +160,11 @@
   <li>Reward: R(s,a,s')</li> 
 </ol>
 
-<p><img src="/images/human-level/MDP.png" alt="Teaser" /></p>
+<p><img src="/images/human-level/MDP.png" alt="MDP" /></p>
 
 <p>Reinforcement learning is a learning process between the agent and the environment. The agent will do some actions depends on the current situation. Then the environment will give you the reward(can be positive or negative) after one transition, and tell agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily life, we make decisions all the times, deciding when I should get to go, what to do in our leisure time, and so on.</p>
 
-<p><img src="/images/human-level/RL.png" alt="Teaser" /></p>
+<p><img src="/images/human-level/RL.png" alt="agent_env" /></p>
 
 
 
