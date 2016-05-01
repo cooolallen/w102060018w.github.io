@@ -145,11 +145,28 @@
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<p><img src="/images/human-level/breakout_state.png" alt="Teaser" /></p>
+<p><img src="/images/human-level/breakout_states.png" alt="Teaser" /></p>
 
-<p>In this blog post, I’ll talk about the <a href="http://www.visualqa.org">Visual Question Answering</a> problem, and I’ll also present neural network based approaches for same. The source code for this blog post is written in Python and <a href="http://keras.io">Keras</a>, and is available on <a href="http://github.com/avisingh599/visual-qa">Github</a>.</p>
 
-<p>An year or so ago, a chatbot named <a href="https://en.wikipedia.org/wiki/Eugene_Goostman">Eugene Goostman</a> made it to the mainstream <a href="http://www.bbc.com/news/technology-27762088">news</a>, after having been reported as the first computer program to have passed the famed <a href="https://en.wikipedia.org/wiki/Turing_test">Turing Test</a> in an event organized at the University of Reading. While the organizers hailed it as a historical achievement, most of the scientific community wasn’t impressed. This leads us to the question: Is the Turing Test, in its original form, a suitable test for AI in the modern day?</p>
+<p>In this blog, I’ll talk about the red-hot topic: deep reinforcement learning. After the trend of the <a href="https://deepmind.com/alpha-go">AlphaGo</a>. Many people have been stunned by the smartness of the machine, which makes the topic of human versus artificial intelligence rises again. This blog will mainly focus on this work:<a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">Human-level control through deep reinforcement learning</a>, published in Nature. And I'll briefly talked about the recent released open source: <a href="https://gym.openai.com/">gym</a>, release by OpenAI</p>
+
+<p>Before jumping into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us come up with a solution to picking up a good choice. MDP has some components, including state(s), action(a), reward(r), and transition function(T). It has a very important assumption: every move only depends on the current condition, namely P(a_t|s_t). Here's the illustration of MDP:</p>
+
+<ol>
+  <li>State(s): the green circle</li>
+  <li>Q-state: the orange circle</li>
+  <li>Action(a)</li>
+  <li>Transition func: T(s,a,s')</li>
+  <li>Reward: R(s,a,s')</li> 
+</ol>
+
+<p><img src="/images/human-level/MDP.png" alt="Teaser" /></p>
+
+<p>Reinforcement learning is a learning process between the agent and the environment. The agent will do some actions depends on the current situation. Then the environment will give you the reward(can be positive or negative) after one transition, and tell agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily life, we make decisions all the times, deciding when I should get to go, what to do in our leisure time, and so on.</p>
+
+<p><img src="/images/human-level/RL.png" alt="Teaser" /></p>
+
+
 
 <p>In the last couple of years, a number of papers (like <a href="http://www.pnas.org/content/112/12/3618.abstract">this paper from JHU/Brown</a>, and <a href="http://arxiv.org/abs/1410.8027">this one from MPI</a>) have suggested that the task of Visual Question Answering (VQA, for short) can be used as an alternative Turing Test. The task involves answering an open-ended question (or a series of questions) about an image. An example is shown below:</p>
 
