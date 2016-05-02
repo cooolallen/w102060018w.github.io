@@ -150,7 +150,10 @@
 
 <p>In this blog, I’ll talk about the red-hot topic: deep reinforcement learning. After the trend of the <a href="https://deepmind.com/alpha-go">AlphaGo</a>. Many people have been stunned by the smartness of the machine, which makes the topic of human versus artificial intelligence rises again. This blog will mainly focus on this work:<a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">Human-level control through deep reinforcement learning</a>, published in Nature. And I'll briefly talked about the recent released open source: <a href="https://gym.openai.com/">gym</a>, release by OpenAI</p>
 
-<p>Before jumping into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us come up with a solution to picking up a good choice. MDP has some components, including state(s), action(a), reward(r), and transition function(T). It has a very important assumption: every move only depends on the current condition, namely P(a_t|s_t). <br>Here's the illustration of MDP:</p>
+<p>Before jumping into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us 
+make a good choice. MDP has several components, including state(s), action(a), and so on. It has a very important assumption: 
+every move only depends on the current condition, namely P(a_t|s_t). 
+<br>Here's the components of MDP:</p>
 
 <ol>
   <li>State(s): the green circle</li>
@@ -160,13 +163,25 @@
   <li>Reward: R(s,a,s')</li> 
 </ol>
 
-<div><img src="/images/human-level/MDP.png" style="width: 50%; height: 50%" align="middle" /></div>
-
-<p>Reinforcement learning is a learning process between the agent and the environment. The agent will do some actions depends on the current situation. Then the environment will give you the reward(can be positive or negative) after one transition, and tell agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily life, we make decisions all the times, deciding when I should get to go, what to do in our leisure time, and so on.</p>
+<p>Reinforcement learning(short as RL in the following) is a learning process between the agent and the environment. The agent will do some actions depends on
+the current situation. Then the environment will give you the reward(can be positive or negative) after the transition, and tells
+agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily 
+life, we make decisions all the times, eg. deciding when I should get to go, what to do in my leisure time, and so on.</p>
 
 <div><img src="/images/human-level/RL.png" style="width: 60%; height: 70%" align="middle" /></div>
 
+<p>In RL, we focus on approxiamating the optimal Q-value(s,a), the expectimax of utility of taking action 'a' in state 's'), since the Q-value connect 
+the relation between action and values. If the term "Q-learning" just flashed through your mind, you're definitly understand why we call 
+it Q-learning.</p>
 
+<p>We can first view Q-function as a black box, and it will give us the expectimax of utitlity. We can use a simple linear function like 
+this to approxiamate the optimal Q-function. (image from UCBerkeley CS188)</p>
+<p><img src="/images/human-level/regression.png" alt="regression" /></p>
+
+<p>However, we have a better tool: deep learning! Deep learning is very good at approxiamating a complex function, and has 
+been get lots of success in image reconition, image detection, language translation, speech recognition and so on. So, here we resort 
+to deep neural network. To learn more about the concept of deep learning, you can refer to <a href=
+"http://www.nature.com/nature/journal/v521/n7553/full/nature14539.html">this paper</a>.</p>
 
 <p>In the last couple of years, a number of papers (like <a href="http://www.pnas.org/content/112/12/3618.abstract">this paper from JHU/Brown</a>, and <a href="http://arxiv.org/abs/1410.8027">this one from MPI</a>) have suggested that the task of Visual Question Answering (VQA, for short) can be used as an alternative Turing Test. The task involves answering an open-ended question (or a series of questions) about an image. An example is shown below:</p>
 
