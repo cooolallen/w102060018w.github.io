@@ -168,14 +168,15 @@ the current situation. Then the environment will give you the reward(can be posi
 agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily 
 life, we make decisions all the times, eg. deciding when I should get to go, what to do in my leisure time, and so on.</p>
 
-<div><img src="/images/human-level/RL.png" style="width: 60%; height: 70%" align="middle" /></div>
+<p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
 <p>In RL, we focus on approxiamating the optimal Q-value(s,a), the expectimax of utility of taking action "a" in state "s"), since the Q-value connect 
 the relation between action and values. If the term "Q-learning" just flashed through your mind, you definitly understand why we call 
 it Q-learning.</p>
 
 <p>We can first view Q-function as a black box, and it will give us the expectimax of utitlity. We can use a simple linear function like 
-this to approxiamate the optimal Q-function. (image from UCBerkeley CS188)</p>
+this to approxiamate the optimal Q-function. </p>
+<h5 id="image-from-UC-Berkeley-CS188">Image from UCBerkeley CS188</h5>
 <p><img src="/images/human-level/regression.png" alt="regression" /></p>
 
 <p>However, we have a better tool: deep learning! Deep learning is very good at approxiamating a complex function, and has 
