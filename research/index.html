@@ -3,7 +3,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Avi Singh</title>
+    <title>Yuan-Hong Liao</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Homepage and blog">
     <meta name="author" content="Liao Yuan-Hong">
@@ -93,13 +93,13 @@
     
     <a class="fa fa-rss" href="/feed.xml"></a>
     
-      <a class="fa fa-twitter" href="https://twitter.com/avisingh599"></a>
+      <a class="fa fa-twitter" href="https://twitter.com/andrewliao11"></a>
     
     
-      <a class="fa fa-google-plus" href="https://plus.google.com/+avisingh599/posts"></a>
+      <a class="fa fa-google-plus" href="https://plus.google.com/+andrewliao11/posts"></a>
     
     
-      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/avisingh599"></a>
+      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/andrewliao11"></a>
     
     
     
@@ -133,14 +133,46 @@
     <h1 class="nomargintop">Research</h1>
   </header>
   <article class="post-content">
-  <h3 class="nomargin">Visual Question Answering</h3>
+  	
+  	
+  	
+<h3 class="nomargin">Breakfast Savior</h3>
+<p>Language: Java<br />
+Topic: <strong>Android App development</strong><br />
+<p>We develop an android app, which is an ordering system. Users can order from home, from the bus or while stuck in 
+traffic and get the breakfast right away! The breakfast supplier can receive the order from the clients and broadcast 
+advertisement to all the clients, too</p>
 
-<p>Guide:<a href="http://cs.stanford.edu/~asaxena">Prof. Ashutosh Saxena</a> and  <a href="http://www.asheshjain.org">Ashesh Jain</a> <br />
-At <strong>Cornell University</strong> in collaboration with <strong>Stanford AI Lab</strong> <br />
-<a href="http://arxiv.org/abs/1509.05016">arxiv pre-print</a> | <a href="http://www.brain4cars.com">project website</a> <br /></p>
+<h3 class="nomargin">Handcam Recognition</h3>
+<p>Language: Python<br />
+Framework: caffe<br />
+Topic: <strong>Image classification</strong><br />
+<p>Our goal is to fine-tune on the pre-trained Imagenet network. We want to apply the techniques to the IoT. We
+teach a machine that can recognize the objects around our daily life, like kettle, phone, cup and so on. Our data is from the 
+camera on the user’s hands, which is why we call it “Handcam Recognition”</p>
 
+<td><img src="/images/handcam_recognition.png" alt="alt text"/></td>
+
+<h3 class="nomargin">Video Title Generation</h3>
+<p>Language: Python<br />
+Framework: Tensorflow<br />
+Topic: <strong>Video caption</strong><br />
+<p>Our goal is to teach a machine to automatically generate a title in natural language from a personal video, about 45 seconds. 
+We first create a highlight detector to find which the highlight clip is, and use the feature of the chosen clip to initialize
+the hyper parameter in LSTM model. Finally, generate the title from the output of the LSTM model. We also try many methods to 
+increase our performance, including spatial attention, sentence augmentation, using C3D feature and so on. My main contribution 
+is at the spatial attention part and sentence augmentation. <br />
+Combine Faster-RCNN with Tracker: <br />
+Our idea is to use object detection to extract where the objects are, and we extract 5 boxes per frame, which forms a 
+feature pool. We train the faster rcnn on Imagenet 200 categories and use the tracker to visualize the video object detection. 
+Then we use the weighted sum of the feature as the input of the LSTM. <br/>
+(I have write a tutorial about training faster rcnn on github, please refer to
+https://github.com/andrewliao11/py-faster-rcnn )</p>
+
+<td><img src="/images/jukin.png" alt="jukin"/></td>
 <!--![Improved face tracking](/images/icra2016/feat_compare_3.jpg)  |  ![Anticipatory Recurrent Neural Net architecture](/images/icra2016/fusionRNN.png)-->
 
+<!--
 <p>Brain4Cars addresses the problem of anticipating driver maneuvers several seconds before they happen. It fuses the information from driver-facing and road-facing cameras with data from other sensors to make its predictions. These predictions can then be passed to driver assistance systems that can warn the driver if the maneuver is deemed to be dangerous. My contributions to the project are listed below:</p>
 
 <ul>
@@ -289,7 +321,7 @@ Scene Flow is the extension of the well-known Optical Flow to 3D data.</p>
   <li>Hilbert Tranform in Verilog. <a href="https://github.com/avisingh599/verilog-hilbert-transform">[Github]</a></li>
   <li>Arduino-based Cashless Campus system with biometric authentication. <a href="https://github.com/avisingh599/arduino-cashless-campus">[Github]</a><a href="https://www.youtube.com/embed/cq6SSzsLrPU">[Youtube]</a></li>
 </ol>
-
+-->
 
   </article>
 </div>
