@@ -170,7 +170,7 @@ life, we make decisions all the times, eg. deciding when I should get to go, wha
 
 <p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
-<p>In RL, we focus on approxiamating the optimal Q-value(s,a), the expectimax of utility of taking action "a" in state "s"), since the Q-value connect 
+<p>In RL, we focus on approxiamating the optimal Q-value(s,a), the expectimax of utility of taking action "a" in state "s", since the Q-value connect 
 the relation between action and values. If the term "Q-learning" just flashed through your mind, you definitly understand why we call 
 it Q-learning.</p>
 
@@ -180,15 +180,26 @@ this to approxiamate the optimal Q-function. </p>
 <p><img src="/images/human-level/regression.png" alt="regression" /></p>
 
 <p>However, we have a better tool: deep learning! Deep learning is very good at approxiamating a complex function, and has 
-been get lots of success in image reconition, image detection, language translation, speech recognition and so on. So, here we resort 
+received lots of success in image recognition, image detection, language translation, speech recognition and so on. So, here we resort 
 to deep neural network. To learn more about the concept of deep learning, you can refer to <a href=
 "http://www.nature.com/nature/journal/v521/n7553/full/nature14539.html">this paper</a>.</p>
 
-<p>In the paper Human-level control through deep reinforcement learning, they used neral network like the following architecture,
+<p>In the paper, Human-level control through deep reinforcement learning, they used neural network like the following architecture,
  which looks simpler than the networks in other domains. Since reinforcement learning is known to be unstable or even diverge 
  when non-linear function approximator (CNN) is used to represent Q value. There are many papers presenting fashion ways to aviod this, 
  but we're not talking about it here.</p>
 <p><img src="/images/human-level/network.png" alt="network" /></p> 
+ 
+ <p>Here we are gonna talk about two strategy for training deep reinforcement network,</p>
+<ol>
+  <li>Experience replay:</ br>
+  Experience replay is that the agent will continually recall what it has been through. Just like when  
+  
+  </li>
+  <li>Iterative update Q-value:</ br>
+  
+  </li>
+</ol>
  
 <!--
 <p>In the last couple of years, a number of papers (like <a href="http://www.pnas.org/content/112/12/3618.abstract">this paper from JHU/Brown</a>, and <a href="http://arxiv.org/abs/1410.8027">this one from MPI</a>) have suggested that the task of Visual Question Answering (VQA, for short) can be used as an alternative Turing Test. The task involves answering an open-ended question (or a series of questions) about an image. An example is shown below:</p>
