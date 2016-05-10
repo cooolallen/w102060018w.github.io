@@ -150,10 +150,10 @@
 
 <p>In this blog, I’ll talk about the red-hot topic: deep reinforcement learning. After the trend of the <a href="https://deepmind.com/alpha-go">AlphaGo</a>. Many people have been stunned by the smartness of the machine, which makes the topic of human versus artificial intelligence rises again. This blog will mainly focus on this work:<a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">Human-level control through deep reinforcement learning</a>, published in Nature. And I'll briefly talked about the recent released open source: <a href="https://gym.openai.com/">gym</a>, release by OpenAI</p>
 
-<p>Before jumping into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us 
+<p>Before digging into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us 
 make a good choice. MDP has several components, including state(s), action(a), and so on. It has a very important assumption: 
 every move only depends on the current condition, namely P(a_t|s_t). 
-<br>Here's the components of MDP:</p>
+<br>Here are the components of MDP:</p>
 
 <ol>
   <li>State(s): the green circle</li>
@@ -164,40 +164,49 @@ every move only depends on the current condition, namely P(a_t|s_t).
 </ol>
 
 <p>Reinforcement learning(short as RL in the following) is a learning process between the agent and the environment. The agent will do some actions depends on
-the current situation. Then the environment will give you the reward(can be positive or negative) after the transition, and tells
+the current situation. Then the environment will give you the reward(either positive or negative) after one transition, and tells
 agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily 
-life, we make decisions all the times, eg. deciding when I should get to go, what to do in my leisure time, and so on.</p>
+life, we make decisions all the times, e.g. deciding when I should get to go, what to do in my leisure time, and so on.</p>
 
 <p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
-<p>In RL, we focus on approxiamating the optimal Q-value(s,a), the expectimax of utility of taking action "a" in state "s", since the Q-value connect 
-the relation between action and values. If the term "Q-learning" just flashed through your mind, you definitly understand why we call 
-it Q-learning.</p>
+<p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in state "s", since the Q-value connects 
+the relation between action and values. If the term "Q-learning" just flashed through your mind, you definitely understand why we call 
+it "Q-learning".</p>
 
-<p>We can first view Q-function as a black box, and it will give us the expectimax of utitlity. We can use a simple linear function like 
-this to approxiamate the optimal Q-function. </p>
+<p>We can use sample to iteratively update our Q-values. The following equation is based on the concept of Temporal Difference 
+Learning. The alpha denotes how much we update our Q-value in each iteration.</p>
+<p><img src="/images/human-level/TD_learning.png" alt="TD" /></p>
+
+<p>However, iterative updates isn’t a smart way, since it treat different state and action pairs as totally different 
+individuals, which makes the state-action space become nearly infinite. Thus, instead of treating each pairs as different 
+individuals, we use feature-based representation. To put it briefly, we can define a function, which maps the similar state
+action pair to similar values.</p>
+
+<p>To define a function, we can use a naïve linear function to approximate the optimal Q-function.</p>
 <h5 id="image-from-UC-Berkeley-CS188">Image from UCBerkeley CS188</h5>
 <p><img src="/images/human-level/regression.png" alt="regression" /></p>
 
-<p>However, we have a better tool: deep learning! Deep learning is very good at approxiamating a complex function, and has 
+<p>However, we have a better tool: deep learning! Deep learning is very good at approximating a complex function. It has 
 received lots of success in image recognition, image detection, language translation, speech recognition and so on. So, here we resort 
 to deep neural network. To learn more about the concept of deep learning, you can refer to <a href=
 "http://www.nature.com/nature/journal/v521/n7553/full/nature14539.html">this paper</a>.</p>
 
 <p>In the paper, Human-level control through deep reinforcement learning, they used neural network like the following architecture,
- which looks simpler than the networks in other domains. Since reinforcement learning is known to be unstable or even diverge 
- when non-linear function approximator (CNN) is used to represent Q value. There are many papers presenting fashion ways to aviod this, 
+ which looks simpler than the networks in other domains. However, reinforcement learning is known to be unstable or even diverge 
+ when non-linear function approximator (CNN) is used to represent Q value. There are many papers presenting fashion ways to avoid this, 
  but we're not talking about it here.</p>
 <p><img src="/images/human-level/network.png" alt="network" /></p> 
  
- <p>Here we are gonna talk about two strategy for training deep reinforcement network,</p>
+ <p>Here we are going to talk about two strategy for training deep reinforcement network mentioned in the paper,</p>
 <ol>
-  <li>Experience replay:</ br>
-  Experience replay is that the agent will continually recall what it has been through. Just like when  
+  <li>Experience replay: the agent will continually recall what it has been through. In this way, we can let our agent frequently 
+  recall which is good and which is bad, which help our Q-function converge.
   
   </li>
-  <li>Iterative update Q-value:</ br>
-  
+  <li>Iterative update Q-value: in machine, we often use gradient descent to train our model. And in most case we don’t want 
+  our model frequently changed or oscillate frequently. Sometimes it will make us fall into local minimum. Iterative update 
+  Q-value is somewhat a method to solve the similar condition.
   </li>
 </ol>
  
