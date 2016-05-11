@@ -199,17 +199,21 @@ to deep neural network. To learn more about the concept of deep learning, you ca
  but we're not talking about it here.</p>
 <p><img src="/images/human-level/network.png" alt="network" /></p> 
  
- <p>Here we are going to talk about two strategy for training deep reinforcement network mentioned in the paper,</p>
+ <p>Here we are going to talk about two strategies for training deep reinforcement network mentioned in the paper,</p>
 <ol>
   <li>Experience replay: the agent will continually recall what it has been through. In this way, we can let our agent frequently 
   recall which is good and which is bad, which help our Q-function converge.
   
   </li>
-  <li>Iterative update Q-value: in machine, we often use gradient descent to train our model. And in most case we don’t want 
-  our model frequently changed or oscillate frequently. Sometimes it will make us fall into local minimum. Iterative update 
+  <li>Iterative update Q-value: in machine learning, we often use gradient descent to train our model. And in most case we don’t
+  want our model frequently changed or oscillate frequently. Sometimes it will make us fall into local minimum. Iterative update 
   Q-value is somewhat a method to solve the similar condition.
   </li>
 </ol>
+<p>Both of these strategies are now viewed as the basic algorithm in DQN.</p>
+
+
+<h2>Intrduction to OpenAI gym</h2>
  
 <!--
 <p>In the last couple of years, a number of papers (like <a href="http://www.pnas.org/content/112/12/3618.abstract">this paper from JHU/Brown</a>, and <a href="http://arxiv.org/abs/1410.8027">this one from MPI</a>) have suggested that the task of Visual Question Answering (VQA, for short) can be used as an alternative Turing Test. The task involves answering an open-ended question (or a series of questions) about an image. An example is shown below:</p>
