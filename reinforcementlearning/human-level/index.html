@@ -165,15 +165,15 @@ every move only depends on the current condition, namely P(a_t|s_t).
 </ol>
 
 <p>Reinforcement learning(short as RL in the following) is a learning process between the agent and the environment. The agent will do some actions depends on
-the current situation. Then the environment will give you the reward(either positive or negative) after one transition, and tells
+the current situation. Then the environment will give you the reward(either positive or negative) after each transition, and tells
 agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily 
 life, we make decisions all the times, e.g. deciding when I should get to go, what to do in my leisure time, and so on.</p>
 
 <p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
-<p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in state "s", since the Q-value connects 
-the relation between action and values. If the term "Q-learning" just flashed through your mind, you definitely understand why we call 
-it "Q-learning".</p>
+<p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in 
+state "s", since the Q-value connects the relation between action and values. Namely, if we have information about Q values, the term "Q-learning" just flashed through your 
+mind, you definitely understand why we call it "Q-learning".</p>
 
 <p>We can use sample to iteratively update our Q-values. The following equation is based on the concept of Temporal Difference 
 Learning. The alpha denotes how much we update our Q-value in each iteration.</p>
