@@ -172,8 +172,9 @@ life, we make decisions all the times, e.g. deciding when I should get to go, wh
 <p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
 <p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in 
-state "s", since the Q-value connects the relation between action and values. Namely, if we have information about Q values, the term "Q-learning" just flashed through your 
-mind, you definitely understand why we call it "Q-learning".</p>
+state "s", since the Q-value connects the relation between action and values. Namely, once we have information about Q values, we
+got the corresponding policy. If the term "Q-learning" just flashed through your mind, you definitely understand 
+why we call it "Q-learning".</p>
 
 <p>We can use sample to iteratively update our Q-values. The following equation is based on the concept of Temporal Difference 
 Learning. The alpha denotes how much we update our Q-value in each iteration.</p>
@@ -229,6 +230,10 @@ learning algorithms. </li>
 
 <p>It contains various of <a href="https://gym.openai.com/envs">games or tasks</a>:</p>
 <p><img src="/images/human-level/gym_game.png" alt="gym_game" /></p> 
+
+<h2>Reference:</h2>
+<a href="http://ai.berkeley.edu/home.html">UC Berkeley CS188 Intro to AI/a><br>
+
 
 <!--
 <p>In the last couple of years, a number of papers (like <a href="http://www.pnas.org/content/112/12/3618.abstract">this paper from JHU/Brown</a>, and <a href="http://arxiv.org/abs/1410.8027">this one from MPI</a>) have suggested that the task of Visual Question Answering (VQA, for short) can be used as an alternative Turing Test. The task involves answering an open-ended question (or a series of questions) about an image. An example is shown below:</p>
