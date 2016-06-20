@@ -7,8 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Homepage and blog">
     <meta name="author" content="Yuan-Hong Liao">
-    <meta name="keywords" content="reinforcementlearning">
-    <link rel="canonical" href="https://andrewliao11.github.io/reinforcementlearning/human-level/">
+    <meta name="keywords" content="object_detection">
+    <link rel="canonical" href="https://andrewliao11.github.io/object_detection/faster_rcnn/">
     <link rel="alternate" type="application/rss+xml" title="RSS Feed for Yuan-Hong Liao" href="/feed.xml" />
 
     <!-- Custom CSS -->
@@ -28,9 +28,9 @@
     <!-- From: https://github.com/mmistakes/hpstr-jekyll-theme/blob/master/_includes/head.html -->
     <meta property="og:locale" content="en_US">
     <meta property="og:type" content="article">
-    <meta property="og:title" content="Human-level control through deep reinforcement learning">
+    <meta property="og:title" content="Video Object Detection using Faster R-CNN">
     <meta property="og:description" content="Homepage and blog">
-    <meta property="og:url" content="https://andrewliao11.github.io/reinforcementlearning/human-level/">
+    <meta property="og:url" content="https://andrewliao11.github.io/object_detection/faster_rcnn/">
     <meta property="og:site_name" content="Yuan-Hong Liao">
 
     <!-- Twitter Card -->
@@ -38,9 +38,9 @@
     
         <meta name="twitter:site" content="@andrewliao11" />
     
-    <meta name="twitter:title" content="Human-level control through deep reinforcement learning" />
+    <meta name="twitter:title" content="Video Object Detection using Faster R-CNN" />
     <meta name="twitter:description" content="Homepage and blog" />
-    <meta name="twitter:url" content="https://andrewliao11.github.io/reinforcementlearning/human-level/" />
+    <meta name="twitter:url" content="https://andrewliao11.github.io/object_detection/faster_rcnn/" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -132,12 +132,12 @@
 
 
 <div class="post-header mb2">
-  <h1>Human-level control through deep reinforcement learning<Down></h1>
-  <span class="post-meta">May 1, 2016</span><br>
+  <h1>Video Object Detection using Faster R-CNN<Down></h1>
+  <span class="post-meta">Jun 20, 2016</span><br>
   
   <span class="post-meta small">
   
-    paper from Google DeepMind
+    paper from Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun
   
   </span>
 </div>
@@ -145,15 +145,16 @@
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
-<p><img src="/images/human-level/breakout_states.png" alt="Teaser" /></p>
 
+<p>I implement Ross's work "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks" to realize 
+real-time object detection, which focuses on image-level problem. Here, I extend it to video-level problem by treating 
+videos like a series of frames and also take the relation between each frame into account. Use a tracker to track the 
+video frame by frame and finally visualize the final result</p>
 
-<p>Here, I’ll talk about the red-hot topic: deep reinforcement learning. After the trend of the <a href="https://deepmind.com/alpha-go">AlphaGo</a>. Many people have been stunned by the smartness of the machine, which makes the topic of human versus artificial intelligence rises again. This blog will mainly focus on this work:<a href="http://www.nature.com/nature/journal/v518/n7540/full/nature14236.html">Human-level control through deep reinforcement learning</a>, published in Nature. And I'll briefly talked about the recent released open source: <a href="https://gym.openai.com/">gym</a>, release by OpenAI</p>
-
-<p>Before digging into reinforcement learning, let’s talk about markov decision process, aka MDP. MDP is a model that help us 
-make a good choice. MDP has several components, including state(s), action(a), and so on. It has a very important assumption: 
-every move only depends on the current condition, namely P(a_t|s_t). 
-<br>Here are the components of MDP:</p>
+<h1>Backgound<Down></h1>
+<p>Object detection is an age-old question. Many application need the techniques of object detection, such as IoT, 
+self-driving car. So here we're gonna introduce the state-of-the-art: faster rcnn, achieves high performance and can be 
+used in real-time.</p>
 <p><img src="/images/human-level/MDP.png" alt="mdp" /></p> 
 
 <ol>
