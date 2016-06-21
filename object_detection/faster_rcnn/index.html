@@ -156,7 +156,7 @@ video frame by frame and finally visualize the final result</p>
 self-driving car. So here we're gonna introduce the state-of-the-art: faster rcnn, achieves high performance and can be 
 used in real-time.</p>
 
-<h5><a href="http://arxiv.org/abs/1311.2524">Region-based Convolutional Neural Network</a></h5>
+<h4><a href="http://arxiv.org/abs/1311.2524">Region-based Convolutional Neural Network</a></h4>
 Region-based Convolutional Neural Network, aka R-CNN, is a visual object detection system that combines 
 bottom-up region proposals with features computed by a convolutional neural network.</br> 
 R-CNN first computes the region proposal with techniques, such as selective search, and feeds the candidates to the 
@@ -168,13 +168,21 @@ However, it can some notable disadvantages:
   <li>Training is expensive in space. (due to the multi-stage training pipeline)</li>
   <li>Object detection is slow. Detection with VGG16 takes 47s / image (on a GPU).</li>
 </ol>
+R-CNN is slow because it performs a ConvNet forward pass for each object proposal, without sharing computation. Many 
+works have been proposed to solve this problem, such as <a href="https://arxiv.org/abs/1406.4729">spatial pyramid 
+pooling networks(SPPnets)</a>, whcih tries to avoid repeatedly computing the convolutional features.</br>
 Thus, R-CNN is not good enough for us in application uses though it provides bare enough performance.
-<h5><a href="http://arxiv.org/abs/1504.08083">Fast R-CNN</a></h5>
 
-<p>Reinforcement learning(short as RL in the following) is a learning process between the agent and the environment. The agent will do some actions depends on
-the current situation. Then the environment will give you the reward(either positive or negative) after each transition, and tells
-agent the next state, which is used in the next decision section. This concept is quite simple and reasonable, right? In our daily 
-life, we make decisions all the times, e.g. deciding when I should get to go, what to do in my leisure time, and so on.</p>
+<h4><a href="http://arxiv.org/abs/1504.08083">Fast R-CNN</a></h4>
+<p>"Fast" R-CNN is quite easy to understand by its word. It's quite fast, achieving 0.3s per image for detection when ignoring 
+the region proposal. Well, how does this magic works? </br>
+The most important factor is that it shares the computation. After the region proposal, we'll get some bounding boxex. In the previous
+alogrithm, they just directly feed the warped image to the CNN. That is, if we have 2000 proposals, we have to do 2000 times 
+forward pass, which wasting lots of time. Actually, we can use the relation between these proposals. Many proposals have overlap 
+with others, and these overlap part is fed into the CNN for many times. Maybe we can just compute them for once.</br>
+Fast R-CNN utilize this property
+
+</p>
 
 <p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
