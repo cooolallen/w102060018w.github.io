@@ -157,15 +157,19 @@ self-driving car. So here we're gonna introduce the state-of-the-art: faster rcn
 used in real-time.</p>
 
 <h5><a href="http://arxiv.org/abs/1311.2524">Region-based Convolutional Neural Network</a></h5>
-<p><img src="/images/human-level/MDP.png" alt="mdp" /></p> 
-
+Region-based Convolutional Neural Network, aka R-CNN, is a visual object detection system that combines 
+bottom-up region proposals with features computed by a convolutional neural network.</br> 
+R-CNN first computes the region proposal with techniques, such as selective search, and feeds the candidates to the 
+convolutional neural network to do the classification task. Here's the system flow of R-CNN: 
+<p><img src="/images/faster_rcnn/rcnn_network.png" alt="mdp" /></p> 
+However, it can some notable disadvantages:
 <ol>
-  <li>State(s): the green circle</li>
-  <li>Q-state: the orange circle</li>
-  <li>Action(a)</li>
-  <li>Transition func: T(s,a,s')</li>
-  <li>Reward: R(s,a,s')</li> 
+  <li>Training is a multi-stage pipeline.(three training stages) </li>
+  <li>Training is expensive in space. (due to the multi-stage training pipeline)</li>
+  <li>Object detection is slow. Detection with VGG16 takes 47s / image (on a GPU).</li>
 </ol>
+Thus, R-CNN is not good enough for us in application uses though it provides bare enough performance.
+<h5><a href="http://arxiv.org/abs/1504.08083">Fast R-CNN</a></h5>
 
 <p>Reinforcement learning(short as RL in the following) is a learning process between the agent and the environment. The agent will do some actions depends on
 the current situation. Then the environment will give you the reward(either positive or negative) after each transition, and tells
