@@ -197,8 +197,14 @@ Faster R-CNN brings the object detection toward the real-time application. It ac
 including time cost in region proposal. If you know well about Fast R-CNN, Faster-R-CNN won't be too difficult for you. It replace 
 the previous region proposal method with a so-called "Region Proposal Netwrok", aka RPN, making the whole network complete. The 
 Faster R-CNN is look like this:<br></p>
-<p><img src="/images/faster_rcnn/faster_rcnn_netwrok.png" alt="RL" /></p>
-<p></p>
+<p><img src="/images/faster_rcnn/faster_rcnn_netwrok.png" alt="RL" /></br>Left: the overview of the Faster R-CNN network. 
+Right: the region proposal network. Different anchors will apply to the sliding window.</p>
+<p>A Region Proposal Network (RPN) takes an image (of any size) as input and outputs a set of rectangular object
+proposals, each with an objectness score. Faster R-CNN model this process with a fully convolutional network. The 
+RPN network will detect whether the current region (generated from sliding window and different anchors) is thing 
+or stuff (objectness score) and do the bounding box regression.</p>
+
+
 
 <p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in 
 state "s", since the Q-value connects the relation between action and values. Namely, once we have information about Q values, we
