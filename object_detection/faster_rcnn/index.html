@@ -207,66 +207,15 @@ or stuff (objectness score) and do the bounding box regression.</p>
 <p>Right now faster r-cnn provides us a real-time algorithm for object detection. We'll see more devices with this techniques, such
  as surveillance camera, mobile device. Or we can even extend the object detection on images to object detection on videos, 
  which is more useful for our lifes.</p></p>
-
-<p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in 
-state "s", since the Q-value connects the relation between action and values. Namely, once we have information about Q values, we
-got the corresponding policy. If the term "Q-learning" just flashed through your mind, you definitely understand 
-why we call it "Q-learning".</p>
-
-<p>We can use sample to iteratively update our Q-values. The following equation is based on the concept of Temporal Difference 
-Learning. The alpha denotes how much we update our Q-value in each iteration.</p>
-<p><img src="/images/human-level/TD_learning.png" alt="TD" /></p>
-
-<p>However, iterative updates isn’t a smart way, since it treat different state and action pairs as totally different 
-individuals, which makes the state-action space become nearly infinite. Thus, instead of treating each pairs as different 
-individuals, we use feature-based representation. To put it briefly, we can define a function, which maps the similar state
-action pair to similar values.</p>
-
-<p>To define a function, we can use a naïve linear function to approximate the optimal Q-function.</p>
-<h5 id="image-from-UC-Berkeley-CS188">Image from UCBerkeley CS188</h5>
-<p><img src="/images/human-level/regression.png" alt="regression" /></p>
-
-<p>However, we have a better tool: deep learning! Deep learning is very good at approximating a complex function. It has 
-received lots of success in image recognition, image detection, language translation, speech recognition and so on. So, here we resort 
-to deep neural network. To learn more about the concept of deep learning, you can refer to <a href=
-"http://www.nature.com/nature/journal/v521/n7553/full/nature14539.html">this paper</a>.</p>
-
-<p>In the paper, Human-level control through deep reinforcement learning, they used neural network like the following architecture,
- which looks simpler than the networks in other domains. However, reinforcement learning is known to be unstable or even diverge 
- when non-linear function approximator (CNN) is used to represent Q value. There are many papers presenting fashion ways to avoid this, 
- but we're not talking about it here.</p>
-<p><img src="/images/human-level/network.png" alt="network" /></p> 
  
- <p>Here we are going to talk about two strategies for training deep reinforcement network mentioned in the paper,</p>
-<ol>
-  <li>Experience replay: the agent will continually recall what it has been through. In this way, we can let our agent frequently 
-  recall which is good and which is bad, which help our Q-function converge.
-  
-  </li>
-  <li>Iterative update Q-value: in machine learning, we often use gradient descent to train our model. And in most case we don’t
-  want our model frequently changed or oscillate frequently. Sometimes it will make us fall into local minimum. Iterative update 
-  Q-value is somewhat a method to solve the similar condition.
-  </li>
-</ol>
-<p>Both of these strategies are now viewed as the basic algorithm in DQN.</p>
+<h2>Train Faster R-CNN on your own dataset(eg. ImageNet)</h2>
+<p>Faster R-CNN is a really cool stuff. You can see my <a href="https://www.youtube.com/watch?v=wY7LADoEuFs">demo video</a>, which 
+is pretty amazin, right. It can even detect the swimming trunk! If you want to train Faster R-CNN on your own dataset, you can 
+refer to <a href="https://github.com/andrewliao11/py-faster-rcnn/blob/master/README.md">my tutorial</a>.</br>
+Here is my result on ImageNet, which I train on validation set 1 and test on validation set 2.</p>
+<p><img src="/images/faster_rcnn/mAP_200.png" alt="RL" /></br>I got 33.1% mAP on ImageNet 200 categories</p>
 
-<h2>Intrduction to <a href="https://gym.openai.com/">OpenAI gym</a></h2>
-<p>It was quite a big news that OpenAI released their open source for the environment of reinforcement learning. When developing
-a new algorithm, we often need some benchmark; however, since everyone is doing their work on different environment, it’s
-difficult to have a fair comparison. Right now, OpenAI creates a playground with the multiple environments for developers to 
-evaluate their algorithm under the same circumstances. </p>
-<h5 id="gym_t">Image from OpenAI Gym</h5>
-<p><img src="/images/human-level/gym.png" alt="gym" /></p> 
 
-<p>OpenAI Gym consists of two parts:</p> 
-<ol>
-<li>The gym open-source library: a collection of test problems — environments — that you can use to work out your reinforcement 
-learning algorithms. </li>
-<li>The OpenAI Gym service: a site and API allowing people to meaningfully compare performance of their trained agents. </li>
-</ol>
-
-<p>It contains various of <a href="https://gym.openai.com/envs">games or tasks</a>:</p>
-<p><img src="/images/human-level/gym_game.png" alt="gym_game" /></p> 
 
 <h2>Reference:</h2>
 Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun, <a href="http://arxiv.org/abs/1506.01497">Faster R-CNN: Towards Real-Time
