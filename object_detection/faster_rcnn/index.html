@@ -187,12 +187,18 @@ layer won't change the spatial relation between the adjacent pixels. That is, th
 part of the feature map in conv5. Based on this, it's possible for us to porject the coordinates in raw image to the corresponding
 neuron in conv5! In this way, we can just compute the image through ConvNet once. After getting the faeture for each bounnding box, 
 it will be fed into the RoI pooling layer, which is a special-case of the spatial pyramid pooling layer. The rest work is similar 
-to the previous work.</p>
+to the previous work.</br>
+The following figure is a more clear illustration of Fast R-CNN:</br></p>
+<p><img src="/images/faster_rcnn/illustration_frcnn.png" alt="RL" /></p>
 
-<h4><a href="">Faster R-CNN</a></h4>
-<p>What is Faster R-CNN?</br> Yes! you're right. It's a faster versino of Fast R-CNN.(The author is quite a direct guy, right?)
-Faster R-CNN brings the object detection toward the real-time application. It achieves
-</p>
+<h2><a href="">Faster R-CNN</a></h2>
+<p>What is Faster R-CNN?</br> Yes! you're right. It's a faster versino of Fast R-CNN.(The author is quite a straight guy, right?)
+Faster R-CNN brings the object detection toward the real-time application. It achieves 10 ms per image for object detection 
+including time cost in region proposal. If you know well about Fast R-CNN, Faster-R-CNN won't be too difficult for you. It replace 
+the previous region proposal method with a so-called "Region Proposal Netwrok", aka RPN, making the whole network complete. The 
+Faster R-CNN is look like this:<br></p>
+<p><img src="/images/faster_rcnn/faster_rcnn_netwrok.png" alt="RL" /></p>
+<p></p>
 
 <p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in 
 state "s", since the Q-value connects the relation between action and values. Namely, once we have information about Q values, we
