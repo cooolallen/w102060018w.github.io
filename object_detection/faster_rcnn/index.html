@@ -176,15 +176,23 @@ Thus, R-CNN is not good enough for us in application uses though it provides bar
 <h4><a href="http://arxiv.org/abs/1504.08083">Fast R-CNN</a></h4>
 <p>"Fast" R-CNN is quite easy to understand by its word. It's quite fast, achieving 0.3s per image for detection when ignoring 
 the region proposal. Well, how does this magic works? </br>
-The most important factor is that it shares the computation. After the region proposal, we'll get some bounding boxex. In the previous
+The most important factor is that it shares the computation. After the region proposal, we'll get some bounding boxes. In the previous
 alogrithm, they just directly feed the warped image to the CNN. That is, if we have 2000 proposals, we have to do 2000 times 
 forward pass, which wasting lots of time. Actually, we can use the relation between these proposals. Many proposals have overlap 
 with others, and these overlap part is fed into the CNN for many times. Maybe we can just compute them for once.</br>
-Fast R-CNN utilize this property
+Fast R-CNN utilizes this property well. Here's the illustration of how it really works:</br></p>
+<p><img src="/images/faster_rcnn/fast_rcnn_network.png" alt="RL" /></p>
+<p>First, we'll feed the whole image into the ConvNet (to conv5). Then, it's where the magic lies in: we know that convolutional 
+layer won't change the spatial relation between the adjacent pixels. That is, the upmost pixel will still falls on the upmost
+part of the feature map in conv5. Based on this, it's possible for us to porject the coordinates in raw image to the corresponding
+neuron in conv5! In this way, we can just compute the image through ConvNet once. After getting the faeture for each bounnding box, 
+it will be fed into the RoI pooling layer, which is a special-case of the spatial pyramid pooling layer. The rest work is similar 
+to the previous work.</p>
 
+<h4><a href="">Faster R-CNN</a></h4>
+<p>What is Faster R-CNN?</br> Yes! you're right. It's a faster versino of Fast R-CNN.(The author is quite a direct guy, right?)
+Faster R-CNN brings the object detection toward the real-time application. It achieves
 </p>
-
-<p><img src="/images/human-level/RL.png" alt="RL" /></p>
 
 <p>In RL, we focus on approximating the optimal Q-value(s,a), the expectimax of utility(accumulated reward) of taking action "a" in 
 state "s", since the Q-value connects the relation between action and values. Namely, once we have information about Q values, we
