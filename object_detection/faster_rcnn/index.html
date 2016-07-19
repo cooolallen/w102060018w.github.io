@@ -198,13 +198,20 @@ the previous region proposal method with a so-called "Region Proposal Netwrok", 
 Faster R-CNN is look like this:<br></p>
 <p><img src="/images/faster_rcnn/faster_rcnn_netwrok.png" alt="RL" /></br>Left: the overview of the Faster R-CNN network. 
 Right: the region proposal network. Different anchors will apply to the sliding window.</p>
-<p>A Region Proposal Network (RPN) takes an image (of any size) as input and outputs a set of rectangular object
+<p>A Region Proposal Network (RPN) takes an image feature map as input and outputs a set of rectangular object
 proposals, each with an objectness score. Faster R-CNN model this process with a fully convolutional network. The 
 RPN network will detect whether the current region (generated from sliding window and different anchors) is thing 
 or stuff (objectness score) and do the bounding box regression.</p>
+<h3>How does RPN work?</h3>
+<p>Usually, the RPN takes image feature map as input(conv5 in Alexnet). And we will apply a 3*3 sliding window on the 
+feature map. Noted that though the window size here is only 3*3, the actual receptive field is quite large if you project 
+the coordinate back to the raw input size. This operation is done by applying an 3*3*256 convolutional kernel on the feature map. 
+In this way, we will get a intermediate layer in 256 dimension. Then the intermediate layer will feed into two different 
+branches, one for objectness score(determines whether the region is thing or stuff) and the other for regression(determines 
+how should the bounding box change to become more similar to the ground truth box).</p>
 
 <h4>Some conclusion:</h4>
-<p>Right now faster r-cnn provides us a real-time algorithm for object detection. We'll see more devices with this techniques, such
+<p>Right now Faster R-CNN provides us a real-time algorithm for object detection. We'll see more devices with this techniques, such
  as surveillance camera, mobile device. Or we can even extend the object detection on images to object detection on videos, 
  which is more useful for our lifes.</p></p>
  
