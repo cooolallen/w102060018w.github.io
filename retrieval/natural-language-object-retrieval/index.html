@@ -133,17 +133,19 @@
 <div class="post-header mb2">
   <h1>Natural Language Object Retrieval<Down></h1>
   <span class="post-meta">Aug 30, 2016</span><br>
-
+  <span class="post-meta small">
+    Ground the object via Natural Language (referring expression)
+  </span>
 </div>
 
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-<p>I implement Ross's work "Faster R-CNN: Towards Real-Time Object Detection with Region Proposal Networks" to realize 
-real-time object detection, which focuses on image-level problem. Here, I extend it to video-level problem by treating 
-videos like a series of frames and also take the relation between each frame into account. Use a tracker to track the 
-video frame by frame and finally visualize the final result</p>
+<p>This article is about the work that I focused on in <a href="https://www.umbocv.com">UmboCV</a> internship. I'll show 
+some survey on natural language object retrieval and similar topic: referring expression. Besides, I released the tensorflow 
+implementation of <a href="https://github.com/andrewliao11/Natural-Language-Object-Retrieval-tensorflow">Natural 
+Language Object Retrieval</a> ([paper link](http://arxiv.org/abs/1511.04164)).</p>
 
 <h2>Backgound</h2>
 <p>Object detection is an age-old question. Many application need the techniques of object detection, such as IoT, 
