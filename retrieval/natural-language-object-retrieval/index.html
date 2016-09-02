@@ -142,15 +142,22 @@
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-<p>This article is about the work that I focused on in <a href="https://www.umbocv.com">UmboCV</a> internship. I'll show 
+<p>This article is about the project that I did during <a href="https://www.umbocv.com">UmboCV</a> internship. I'll show 
 some survey on natural language object retrieval and similar topic: referring expression. Besides, I released the tensorflow 
 implementation of <a href="https://github.com/andrewliao11/Natural-Language-Object-Retrieval-tensorflow">Natural 
-Language Object Retrieval</a> (<a href="http://arxiv.org/abs/1511.04164">paper link</a>).</p>
+Language Object Retrieval</a> (<a href="http://arxiv.org/abs/1511.04164">paper link</a>). </p>
 
-<h2>Backgound</h2>
-<p>Object detection is an age-old question. Many application need the techniques of object detection, such as IoT, 
-self-driving car. So here we're gonna introduce the state-of-the-art: faster rcnn, achieves high performance and can be 
-used in real-time.</p>
+<h2>Big concept</h2>
+
+<p>We always tend to use some adjective or nearby things to refer the objects. Nowadays, we have smart object classification
+, object detection techniques. However these are all human-defined categories. We need to move further, from pre-defined 
+category to free-form natural language, which we call it referring expression (not a general expression, but a specific one). 
+In the future, we might ask out AI robot to take the remote controller for us, or to differentiate the man near the pole from 
+the man in the red T-shirt. The AI robot must understand these concept, how human describe the object.
+</br>
+Here's the illustration: </p>
+<p><img src="/images/retrieval/illustration.png" alt="illustration" /></p>
+<p>The blue box represents the ground truth, while the yellow stands for positive recall, red for negative recall.</p>
 
 <h4><a href="http://arxiv.org/abs/1311.2524">Region-based Convolutional Neural Network</a></h4>
 Region-based Convolutional Neural Network, aka R-CNN, is a visual object detection system that combines 
