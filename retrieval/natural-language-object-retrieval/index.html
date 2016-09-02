@@ -132,7 +132,7 @@
 
 <div class="post-header mb2">
   <h1>Natural Language Object Retrieval<Down></h1>
-  <span class="post-meta">Aug 30, 2016</span><br>
+  <span class="post-meta">Sept 2, 2016</span><br>
   <span class="post-meta small">
     Ground the object via Natural Language (referring expression)
   </span>
@@ -142,7 +142,7 @@
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-<p>This article is about the project that I did during <a href="https://www.umbocv.com">UmboCV</a> internship. I'll show 
+<p>This article is about part of my project that I did during <a href="https://www.umbocv.com">UmboCV</a> internship. I'll show 
 some survey on natural language object retrieval and similar topic: referring expression. Besides, I released the tensorflow 
 implementation of <a href="https://github.com/andrewliao11/Natural-Language-Object-Retrieval-tensorflow">Natural 
 Language Object Retrieval</a> (<a href="http://arxiv.org/abs/1511.04164">paper link</a>). </p>
@@ -158,6 +158,16 @@ the man in the red T-shirt. The AI robot must understand these concept, how huma
 Here's the illustration: </p>
 <p><img src="/images/retrieval/illustration.png" alt="illustration" /></p>
 <p>The blue box represents the ground truth, while the yellow stands for positive recall, red for negative recall.</p>
+
+<h2>Overview:</h2>
+<ol>
+  <li>Natural Language Object Retrieval </li>
+  <li>Grounding with supervised training + multi-task loss</li>
+  <li>Grounding + region proposal network</li>
+</ol>
+
+<h4>Natural Language Object Retrieval, inspired by <a href="http://arxiv.org/abs/1511.04164">Ronghang Hu's work</a></h4>
+<p></p>
 
 <h4><a href="http://arxiv.org/abs/1311.2524">Region-based Convolutional Neural Network</a></h4>
 Region-based Convolutional Neural Network, aka R-CNN, is a visual object detection system that combines 
@@ -175,58 +185,6 @@ R-CNN is slow because it performs a ConvNet forward pass for each object proposa
 works have been proposed to solve this problem, such as <a href="https://arxiv.org/abs/1406.4729">spatial pyramid 
 pooling networks(SPPnets)</a>, whcih tries to avoid repeatedly computing the convolutional features.</br>
 Thus, R-CNN is not good enough for us in application uses though it provides bare enough performance.
-
-<h4><a href="http://arxiv.org/abs/1504.08083">Fast R-CNN</a></h4>
-<p>"Fast" R-CNN is quite easy to understand by its word. It's quite fast, achieving 0.3s per image for detection when ignoring 
-the region proposal. Well, how does this magic works? </br>
-The most important factor is that it shares the computation. After the region proposal, we'll get some bounding boxes. In the previous
-alogrithm, they just directly feed the warped image to the CNN. That is, if we have 2000 proposals, we have to do 2000 times 
-forward pass, which wasting lots of time. Actually, we can use the relation between these proposals. Many proposals have overlap 
-with others, and these overlap part is fed into the CNN for many times. Maybe we can just compute them for once.</br>
-Fast R-CNN utilizes this property well. Here's the illustration of how it really works:</br></p>
-<p><img src="/images/faster_rcnn/fast_rcnn_network.png" alt="RL" /></p>
-<p>First, we'll feed the whole image into the ConvNet (to conv5). Then, it's where the magic lies in: we know that convolutional 
-layer won't change the spatial relation between the adjacent pixels. That is, the upmost pixel will still falls on the upmost
-part of the feature map in conv5. Based on this, it's possible for us to porject the coordinates in raw image to the corresponding
-neuron in conv5! In this way, we can just compute the image through ConvNet once. After getting the faeture for each bounnding box, 
-it will be fed into the RoI pooling layer, which is a special-case of the spatial pyramid pooling layer. The rest work is similar 
-to the previous work.</br>
-The following figure is a more clear illustration of Fast R-CNN:</br></p>
-<p><img src="/images/faster_rcnn/illustration_frcnn.png" alt="RL" /></p>
-
-<h2><a href="http://arxiv.org/abs/1506.01497">Faster R-CNN</a></h2>
-<p>What is Faster R-CNN?</br> Yes! you're right. It's a faster versino of Fast R-CNN.(The author is quite a straight guy, right?)
-Faster R-CNN brings the object detection toward the real-time application. It achieves 10 ms per image for object detection 
-including time cost in region proposal. If you know well about Fast R-CNN, Faster-R-CNN won't be too difficult for you. It replace 
-the previous region proposal method with a so-called "Region Proposal Netwrok", aka RPN, making the whole network complete. The 
-Faster R-CNN is look like this:<br></p>
-<p><img src="/images/faster_rcnn/faster_rcnn_netwrok.png" alt="RL" /></br>Left: the overview of the Faster R-CNN network. 
-Right: the region proposal network. Different anchors will apply to the sliding window.</p>
-<p>A Region Proposal Network (RPN) takes an image feature map as input and outputs a set of rectangular object
-proposals, each with an objectness score. Faster R-CNN model this process with a fully convolutional network. The 
-RPN network will detect whether the current region (generated from sliding window and different anchors) is thing 
-or stuff (objectness score) and do the bounding box regression.</p>
-<h3>How does RPN work?</h3>
-<p>Usually, the RPN takes image feature map as input(conv5 in Alexnet). And we will apply a 3*3 sliding window on the 
-feature map. Noted that though the window size here is only 3*3, the actual receptive field is quite large if you project 
-the coordinate back to the raw input size. This operation is done by applying an 3*3*256 convolutional kernel on the feature map. 
-In this way, we will get a intermediate layer in 256 dimension. Then the intermediate layer will feed into two different 
-branches, one for objectness score(determines whether the region is thing or stuff) and the other for regression(determines 
-how should the bounding box change to become more similar to the ground truth box).</p>
-
-<h4>Some conclusion:</h4>
-<p>Right now Faster R-CNN provides us a real-time algorithm for object detection. We'll see more devices with this techniques, such
- as surveillance camera, mobile device. Or we can even extend the object detection on images to object detection on videos, 
- which is more useful for our lifes.</p></p>
- 
-<h2>Train Faster R-CNN on your own dataset(eg. ImageNet)</h2>
-<p>Faster R-CNN is a really cool stuff. You can see my <a href="https://www.youtube.com/watch?v=wY7LADoEuFs">demo video</a>, which 
-is pretty amazin, right. It can even detect the swimming trunk! If you want to train Faster R-CNN on your own dataset, you can 
-refer to <a href="https://github.com/andrewliao11/py-faster-rcnn/blob/master/README.md">my tutorial</a>.</br>
-Here is my result on ImageNet, which I train on validation set 1 and test on validation set 2.</p>
-<p><img src="/images/faster_rcnn/mAP_200.png" alt="RL" /></br>I got 33.1% mAP on ImageNet 200 categories</p>
-
-
 
 <h2>Reference:</h2>
 Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun, <a href="http://arxiv.org/abs/1506.01497">Faster R-CNN: Towards Real-Time
