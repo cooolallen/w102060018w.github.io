@@ -166,8 +166,16 @@ Here's the illustration: </p>
   <li>Grounding + region proposal network</li>
 </ol>
 
-<h4>Natural Language Object Retrieval, inspired by <a href="http://arxiv.org/abs/1511.04164">Ronghang Hu's work</a></h4>
-<p></p>
+<h4>1. Natural Language Object Retrieval, inspired by <a href="http://arxiv.org/abs/1511.04164">Ronghang Hu's work</a></h4>
+<p>This work was appeared in cvpr 2016. It extend the previous work, <a href="https://arxiv.org/abs/1411.4389">LRCN</a>, use 
+the same way to generate caption. Compare the predicted caption with the query, and find the most related one. I call the whole 
+process "reconstruction", which means that the model try to reconstruct back the query based on the bbox feature.</br>
+Here's the model:</br>
+<img src="/images/retrieval/natural-language-object-retrieval-model.png" alt="model-nlor" />
+Noted that the model generate the caption not onlt based on the bbox feature, but also on the context feature, though it's a relatively
+ naive way to use the context information. The paper also mentions the w/o context feature perormance:</br>
+<img src="/images/retrieval/exp.png" alt="exp-nlor" />
+</p>
 
 <h4><a href="http://arxiv.org/abs/1311.2524">Region-based Convolutional Neural Network</a></h4>
 Region-based Convolutional Neural Network, aka R-CNN, is a visual object detection system that combines 
@@ -185,6 +193,8 @@ R-CNN is slow because it performs a ConvNet forward pass for each object proposa
 works have been proposed to solve this problem, such as <a href="https://arxiv.org/abs/1406.4729">spatial pyramid 
 pooling networks(SPPnets)</a>, whcih tries to avoid repeatedly computing the convolutional features.</br>
 Thus, R-CNN is not good enough for us in application uses though it provides bare enough performance.
+
+<h2>Acknowledgement:</h2>
 
 <h2>Reference:</h2>
 Shaoqing Ren, Kaiming He, Ross Girshick, Jian Sun, <a href="http://arxiv.org/abs/1506.01497">Faster R-CNN: Towards Real-Time
