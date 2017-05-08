@@ -1,4 +1,3 @@
-# Andrew's personal website
-I'm an ambitious student embracing computer science, mainly on computer vision (CV) and  machine learning (ML).
-I love to learn new technique and do it by myself. In my personal website, I have a blog, sharing some ideas and thoughts.   
+# Huiting Hong's personal website
+I am a person love learning new stuff and enjoy thinking some cool ideas to combine artistic work and cutting egde techinique. I am now doing research on Behavior Signal Processing, which help us to interpret the human behavior in a novel way.
 ### Check in my [website](http://w102060018w.github.io) right now
