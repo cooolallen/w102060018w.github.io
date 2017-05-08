@@ -3,13 +3,13 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Yuan-Hong Liao</title>
+    <title>Huiting Hong</title>
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <meta name="description" content="Homepage and blog">
-    <meta name="author" content="Liao Yuan-Hong">
+    <meta name="author" content="Huiting Hong">
     
-    <link rel="canonical" href="https://andrewliao11.github.io/research/">
-    <link rel="alternate" type="application/rss+xml" title="RSS Feed for Liao Yuan-Hong" href="/feed.xml" />
+    <link rel="canonical" href="https://w102060018w.github.io/research/">
+    <!-- <link rel="alternate" type="application/rss+xml" title="RSS Feed for Liao Yuan-Hong" href="/feed.xml" /> -->
 
     <!-- Custom CSS -->
     <link rel="stylesheet" href="/css/pixyll.css?201602132020" type="text/css">
@@ -30,17 +30,17 @@
     <meta property="og:type" content="article">
     <meta property="og:title" content="Research">
     <meta property="og:description" content="Homepage and blog">
-    <meta property="og:url" content="https://andrewliao11.github.io/research/">
-    <meta property="og:site_name" content="Liao Yuan-Hong">
+    <meta property="og:url" content="https://w102060018w.github.io/research/">
+    <meta property="og:site_name" content="Huiting Hong">
 
     <!-- Twitter Card -->
     <meta name="twitter:card" content="summary" />
     
-        <meta name="twitter:site" content="@andrewliao11" />
+        <meta name="twitter:site" content="@w102060018w" />
     
     <meta name="twitter:title" content="Research" />
     <meta name="twitter:description" content="Homepage and blog" />
-    <meta name="twitter:url" content="https://andrewliao11.github.io/research/" />
+    <meta name="twitter:url" content="https://w102060018w.github.io/research/" />
 
     <!-- Icons -->
     <link rel="apple-touch-icon" sizes="57x57" href="/apple-icon-57x57.png">
@@ -76,7 +76,7 @@
     <header class="site-header px2 px-responsive">
   <div class="mt2 wrap">
     <div class="measure">
-      <a href="https://andrewliao11.github.io" class="site-title"></a>
+      <a href="https://w102060018w.github.io" class="site-title"></a>
       <nav class="site-nav">
         <a href="/">Home</a>
 <a href="/research/">Research</a>
@@ -87,16 +87,13 @@
         <div class="social-icons">
   <div class="left">
     
-      <a class="fa fa-github" href="https://github.com/andrewliao11"></a>
+      <a class="fa fa-github" href="https://github.com/w102060018w"></a>
     
     
-      <a class="fa fa-twitter" href="https://twitter.com/andrewliao11"></a>
+      <a class="fa fa-twitter" href="https://twitter.com/w102060018w"></a>
     
     
-      <a class="fa fa-google-plus" href="https://plus.google.com/+andrewliao11/posts"></a>
-    
-    
-      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/andrewliao11"></a>
+      <a class="fa fa-linkedin" href="https://www.linkedin.com/in/huiting-hong-a591a9129/"></a>
     
     
     
@@ -111,7 +108,7 @@
 
 <div class="clearfix">
     
-      <center> <a class="fa fa-envelope" href="mailto:andrewliao11@gmail.com"></a> andrewliao11@gmail.com <center>
+      <center> <a class="fa fa-envelope" href="mailto:w102060018w@gmail.com"></a> w102060018w@gmail.com <center>
     
 </div>
 
@@ -133,40 +130,29 @@
   	
   	
   	
-<h3 class="nomargin">Breakfast Savior</h3>
-<p>Language: Java<br />
-Topic: <strong>Android App development</strong><br />
-<p>We develop an android app, which is an ordering system. Users can order from home, from the bus or while stuck in 
-traffic and get the breakfast right away! The breakfast supplier can receive the order from the clients and broadcast 
-advertisement to all the clients, too</p>
-
-<h3 class="nomargin">Handcam Recognition</h3>
+<h3 class="nomargin">Automatic Detection of Speech under Cold</h3>
 <p>Language: Python<br />
-Framework: caffe<br />
-Topic: <strong>Image classification</strong><br />
-<p>Our goal is to fine-tune on the pre-trained Imagenet network. We want to apply the techniques to the IoT. We
-teach a machine that can recognize the objects around our daily life, like kettle, phone, cup and so on. Our data is from the 
-camera on the user’s hands, which is why we call it “Handcam Recognition”</p>
+Index Terms: <strong>Strength Modeling, Speech under Cold, Computational Paralinguistics</strong><br />
+<p>We deal with the Cold sub-challenge proposed in the INTERSPEECH 2017 COMPUTATIONAL PARALINGUISTICS CHALLENGE. Base on the strength modeling, in addition to conventionally extract feature of audio signal by standard OPENSMILE, we do further fusion on not only feature-level fusion and decision-level fusion, but also fusion the result from multiple sub-dictionary whithin the framework of GMM model followed by Fisher Vector encoding. Moreover, we combine the above result of fusion with eGeMAPS functional features, and achieve 70.2% and 65.5% on development and test set provided by 2017 ComPareE, respectively.</p><br />
+<p>For more details in the approach mentioned above, please refer to <a href="/Interspeech_ComPareE_17/">Interspeech 2017 ComPareE</a> in my blog</p>
+
+
+<h3 class="nomargin">Neural Style Transfer</h3>
+<p>Language: lua<br />
+Framework: Theano<br />
+Index Terms: <strong>Deep Learning, Style Transfer</strong><br />
+<p>We conducted research on the algorithm of neural style transfer, our goal is to improve the 圖義上的相似, we develop a friendly user interface to let users generate ..map.  </p>
 
 <td><img src="/images/handcam_recognition.png" alt="alt text"/></td>
 
-<h3 class="nomargin">Video Title Generation</h3>
+<h3 class="nomargin">Heuristic Planning with Resources in PyDDL</h3>
 <p>Language: Python<br />
-Framework: Tensorflow<br />
-Topic: <strong>Video caption</strong><br />
-<p>Our goal is to teach a machine to automatically generate a title in natural language from a personal video, about 45 seconds. 
-We first create a highlight detector to find which the highlight clip is, and use the feature of the chosen clip to initialize
-the hyper parameter in LSTM model. Finally, generate the title from the output of the LSTM model. We also try many methods to 
-increase our performance, including spatial attention, sentence augmentation, using C3D feature and so on. My main contribution 
-is at the spatial attention part and sentence augmentation. <br />
-Combine Faster-RCNN with Tracker: <br />
-Our idea is to use object detection to extract where the objects are, and we extract 5 boxes per frame, which forms a 
-feature pool. We train the faster rcnn on Imagenet 200 categories and use the tracker to visualize the video object detection. 
-Then we use the weighted sum of the feature as the input of the LSTM. <br/>
-(I have write a tutorial about training faster rcnn on github, please refer to https://github.com/andrewliao11/py-faster-rcnn.)</p>
+Framework: <br />
+Topic: <strong>Heuristic Planning, A*, ...</strong><br />
+<p></p>
 <img src="/images/jukin.png" alt="jukin"/>
 
-<h3 class="nomargin">Grounding via natural language</h3>
+<!-- <h3 class="nomargin">Grounding via natural language</h3>
 <p>Language: Python<br />
 Framework: Tensorflow<br />
 Topic: <strong>Visual grounding</strong><br />
@@ -183,7 +169,7 @@ Technology Center in Industrial Technology Research Institute (<a href="https://
 I like to study the algorithms in reinforcement leaning and I have shared some of my survey 
 <a href="https://github.com/andrewliao11/Deep-Reinforcement-Learning-Survey">here</a>. Besides studying, I’ll 
 share my survey to the members in my department.</p>
-<img src="/images/rl_talk.png" alt="rl_talk"/>
+<img src="/images/rl_talk.png" alt="rl_talk"/> -->
 <!--![Improved face tracking](/images/icra2016/feat_compare_3.jpg)  |  ![Anticipatory Recurrent Neural Net architecture](/images/icra2016/fusionRNN.png)-->
 
 <!--
