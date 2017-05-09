@@ -715,7 +715,10 @@ pre a:last-of-type::before {
 
 pre a:only-of-type::before {
   padding: 10px; }
-
+sub {
+    vertical-align: sub;
+    font-size: smaller;
+}
 input,
 select,
 textarea,
