@@ -139,9 +139,11 @@
 
 <p>I start working on this challenge around Feb. 2017 with other members in our <a href="http://biic.ee.nthu.edu.tw/">lab</a>. We plan to apply several traditional procedures on detecting audio signal with specific characteristic and try other distinctive approaches to see if they will get better results. In this article, I will give a brief concept of different ending approach, including BOW, GMM along with Fisher Vector. Also I will show some detail on strength model. Finally show some results we get in this challenge. </p>
 
-<h2>Common used encoding approaches</h2>
+<h2>Commonly used encoding approaches</h2>
 <h4>BOW(Bag of Words)</h4>
-<p>Bag of words is an approach which can reduce the dimension of features processed from raw data. 
+<p>Bag of words is an approach which can reduce the dimension of features processed from raw data. The brief concept is as follows:</br>
+First, we can use kmeans method to generate numbers of k centrol points of k-groups(or called k-clusters) respectively. Second, we can categorize all features into k-cluster base on each central point. Finally, calculating how many features belong to each cluster, and take the 'voting' result to draw a histogram, which x-axis represents k-cluster and y-axis represents the number of features belongs to each cluster.</br>
+The generated histogram is then used to describe the origianl features, which reduce the dimension from NxD to 1xD.
 </br>
 Here's the illustration: </p>
 <p><img src="/images/retrieval/illustration.png" alt="illustration" /></p>
