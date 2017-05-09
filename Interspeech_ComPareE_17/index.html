@@ -128,29 +128,22 @@
 
 
 <div class="post-header mb2">
-  <h1>Natural Language Object Retrieval<Down></h1>
-  <span class="post-meta">Sept 2, 2016</span><br>
-  <span class="post-meta small">
-    Ground the object via Natural Language (referring expression)
-  </span>
+  <h1>Interspeech 2017 ComPareE<Down></h1>
+  <span class="post-meta">Mar 30, 2017</span><br>
+<!--   <span class="post-meta small">
+    Basic concept on 
+  </span> -->
 </div>
 
 <article class="post-content">
   <script type="text/javascript" src="http://cdn.mathjax.org/mathjax/latest/MathJax.js?config=TeX-AMS-MML_HTMLorMML"></script>
 
 
-<p>This article is about part of my project that I did during <a href="https://www.umbocv.com">UmboCV</a> internship. I'll show 
-some survey on natural language object retrieval and similar topic: referring expression. Besides, I released the tensorflow 
-implementation of <a href="https://github.com/andrewliao11/Natural-Language-Object-Retrieval-tensorflow">Natural 
-Language Object Retrieval</a> (<a href="http://arxiv.org/abs/1511.04164">paper link</a>). </p>
+<p>I start working on this challenge around Feb. 2017 with other members in our <a href="http://biic.ee.nthu.edu.tw/">lab</a>. We plan to apply several traditional procedures on detecting audio signal with specific characteristic and try other distinctive approaches to see if they will get better results. In this article, I will give a brief concept of different ending approach, including BOW, GMM along with Fisher Vector. Also I will show some detail on strength model. Finally show some results we get in this challenge. </p>
 
-<h2>Big concept</h2>
-
-<p>We always tend to use some adjective or nearby things to refer the objects. Nowadays, we have smart object classification
-, object detection techniques. However these are all human-defined categories. We need to move further, from pre-defined 
-category to free-form natural language, which we call it referring expression (not a general expression, but a specific one). 
-In the future, we might ask out AI robot to take the remote controller for us, or to differentiate the man near the pole from 
-the man in the red T-shirt. The AI robot must understand these concept, how human describe the object.
+<h2>Common used encoding approaches</h2>
+<h4>BOW(Bag of Words)</h4>
+<p>Bag of words is an approach which can reduce the dimension of features processed from raw data. 
 </br>
 Here's the illustration: </p>
 <p><img src="/images/retrieval/illustration.png" alt="illustration" /></p>
