@@ -142,21 +142,34 @@
 <h2>Commonly used encoding approaches</h2>
 <h4>BOW(Bag of Words)</h4>
 <p>Bag of words is an approach which can reduce the dimension of features processed from raw data. The brief concept can be devided into two parts, one is to decide the criteria of categorization and the other is to generate histogram base on the criteria:</br>
-Suppose we have already processed our raw data (audio signal) and get the NxD dimension features.  
+<i>Suppose we have already processed our raw data (audio signal) and get the N<sub>x</sub>D dimension features.</i>  
 <h5>Decide the criteria of cluster-categorization</h5>
 Sometimes we also say it's just like making a vocabulary codebook, which can later be used at counting the amount of each word.<br/> 
-The idea started at using kmeans method to generate numbers of k centrol points of k-clusters respectively. If nowadays we have mutiple features, F<sub>i</sub>, whose dimension are all NxD, we can randomly sample equal amount of rows from F<sub>i</sub> and generate the center point of each cluster base on the information in different features. In this way, the center point we create of each cluster can be more valid on different feature, and let the later categorized-result(histogram) to be more representative and convincing.
+The idea started at using <a href="https://www.wikiwand.com/en/K-means_clustering">kmeans</a> method to generate numbers of k centrol points of k-clusters respectively. If nowadays we have mutiple features, F<sub>i</sub>, whose dimension are all N<sub>x</sub>D, we can randomly sample equal amount of rows from F<sub>i</sub> and generate the center point of each cluster base on the information in different features. In this way, the center point we create of each cluster can be more valid on different feature, and let the later categorized-result(histogram) to be more representative and convincing.
 <h5>Generate histogram</h5>
-After we got the center point of each cluster, we can categorize our features into different clusters. Each features, F<sub>i</sub>, will have a categorization result, showing the amount of pieces belongs to each cluster.(Due to the dimension of F<sub>i</sub> is NxD, we can know that there are totally N pieces in the feature F<sub>i</sub>). Finally, the 'voting' result can also be seen as a histogram, which x-axis represents k-cluster and y-axis represents the number of pieces belongs to each cluster.</br>
-The generated histogram is then used to describe the origianl features, which reduce the dimension from NxD to 1xD. 
-<p>In short, BOW approach can help us to encode the feature into a more representative while low-dimension result.</p>
+After we got the center point of each cluster, we can categorize our features into different clusters. Each features, F<sub>i</sub>, will have a categorization result, showing the amount of vectors belongs to each cluster.(Due to the dimension of F<sub>i</sub> is N<sub>x</sub>D, we can know that there are totally N vectors with length D in the feature F<sub>i</sub>). Finally, the 'voting' result can be seen as a histogram, which x-axis represents k-cluster and y-axis represents the number of vectors belongs to each cluster.</br>
+The generated histogram is then used to describe the origianl features, which reduce the dimension from N<sub>x</sub>D to 1<sub>x</sub>D. </br>
+<p><b>In short, BOW approach can help us to encode the feature into a more representative while low-dimension result.</b></p>
 </br>
 Here's the flow:</br>
 <img src="/images/Interspeech_2017/BOW.png" alt="model-nlor" />
 
 
 <h4>GMM and Fisher Vector</h4>
-<p></p>
+<p>Another much more popularly used encoding aproach is Gaussian Mixture Model(GMM) followed by Fisher Vector. </br>
+The <a href="https://www.wikiwand.com/en/Mixture_model">GMM</a> is like a more extended version of kmeans-clustering, it represents a cluster not using a center point but a gaussian distribution with correspnding weight. Therefore, with our features, F<sub>i</sub>, in dimension N<sub>x</sub>D, we can expect that we will get the D amount of set of Gaissian Distribution. In each set, there will be the number of K gaussian distribution as we set the number of clusters to be K. We all know that in order to describe a gaussian distribution, we have to specify its mean and variance, so after generating the Gaussian Mixture Model of our k-cluster, we will have a matrix of Mean<sub>DxK</sub> and a matrix of Covarience<sub>DxK</sub>. Additionally, to describe the relationship between k gaussian distribution, we will have the posterior value and a matrix of Prior<sub>Kx1</sub>(which could also be considered as the weight between k gaussian distribution).</br></p>
+<p>After we build our GMM, we can now encode our features, F<sub>i</sub>, base on the Mean<sub>DxK</sub>,Covarience<sub>DxK</sub>, posterier, and Prior<sub>Kx1</sub>. The encoded result is what we called Fisher Vector.(a special case of general <a href = "https://www.wikiwand.com/en/Fisher_kernel">Fisher Kernel</a>)</br>
+When starting encoding our features, F<sub>i</sub>(<sub>NxD</sub>), we will pick out one feature(N<sub>x</sub>1) at each time, and see which set of gaussian distribution is more similar to itself. After finding out that set, it will modify the prior between K gaussian distribution in the set, in order to fit the feature better. Therefore, the encoded result of one feature is the matrix of prior value along with posterior, which dimension should be K<sub>x</sub>2. After finishing each feature in the F<sub>i</sub>, we will get the Fisher Vector with dimension of D<sub>x</sub>K<sub>x</sub>2.</br>
+
+<p>The Fisher Vector is then used to describe the origianl features. We can see that the original dimension is N<sub>x</sub>D while the encoded result is D<sub>x</sub>K<sub>x</sub>2, usually K will smaller than N, so the encoded reesult will decrease the dimension and since the representation of gaussian distrution is more complicate, use it as the description of a cluster will be more convincing. That is why Fisher Vector is used more popularly when encoding the features.</br></p>
+Here's the flow:</br>
+<img src="/images/Interspeech_2017/FV.png" alt="model-nlor" />
+
+<h4>Strength Model</h4>
+
+
+
+
 <!-- 
 Here's the illustration: </p>
 <p><img src="/images/retrieval/illustration.png" alt="illustration" /></p>
