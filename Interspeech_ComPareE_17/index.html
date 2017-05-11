@@ -152,12 +152,11 @@ The generated histogram is then used to describe the origianl features, which re
 <p><b>In short, BOW approach can help us to encode the feature into a more representative while low-dimension result.</b></p>
 </br>
 Here's the flow:</br>
-<img src="/images/Interspeech_2017/BOW.png" alt="model-nlor" />
+<img src="/images/Interspeech_2017/BOW.png" alt="model-nlor" /></br>
 
 
 <h4>GMM and Fisher Vector</h4>
-<p>Another much more popularly used encoding aproach is Gaussian Mixture Model(GMM) followed by Fisher Vector. </br>
-The <a href="https://www.wikiwand.com/en/Mixture_model">GMM</a> is like a more extended version of kmeans-clustering, it represents a cluster not using a center point but a gaussian distribution with correspnding weight. Therefore, with our features, F<sub>i</sub>, in dimension N<sub>x</sub>D, we can expect that we will get the D amount of set of Gaissian Distribution. In each set, there will be the number of K gaussian distribution as we set the number of clusters to be K. We all know that in order to describe a gaussian distribution, we have to specify its mean and variance, so after generating the Gaussian Mixture Model of our k-cluster, we will have a matrix of Mean<sub>DxK</sub> and a matrix of Covarience<sub>DxK</sub>. Additionally, to describe the relationship between k gaussian distribution, we will have the posterior value and a matrix of Prior<sub>Kx1</sub>(which could also be considered as the weight between k gaussian distribution).</br></p>
+<p>Another much more popularly used encoding aproach is Gaussian Mixture Model(GMM) followed by Fisher Vector. The <a href="https://www.wikiwand.com/en/Mixture_model">GMM</a> is like a more extended version of kmeans-clustering, it represents a cluster not using a center point but a gaussian distribution with correspnding weight. Therefore, with our features, F<sub>i</sub>, in dimension N<sub>x</sub>D, we can expect that we will get the D amount of set of Gaissian Distribution. In each set, there will be the number of K gaussian distribution as we set the number of clusters to be K. We all know that in order to describe a gaussian distribution, we have to specify its mean and variance, so after generating the Gaussian Mixture Model of our k-cluster, we will have a matrix of Mean<sub>DxK</sub> and a matrix of Covarience<sub>DxK</sub>. Additionally, to describe the relationship between k gaussian distribution, we will have the posterior value and a matrix of Prior<sub>Kx1</sub>(which could also be considered as the weight between k gaussian distribution).</br></p>
 <p>After we build our GMM, we can now encode our features, F<sub>i</sub>, base on the Mean<sub>DxK</sub>,Covarience<sub>DxK</sub>, posterier, and Prior<sub>Kx1</sub>. The encoded result is what we called Fisher Vector.(a special case of general <a href = "https://www.wikiwand.com/en/Fisher_kernel">Fisher Kernel</a>)</br>
 When starting encoding our features, F<sub>i</sub>(<sub>NxD</sub>), we will pick out one feature(N<sub>x</sub>1) at each time, and see which set of gaussian distribution is more similar to itself. After finding out that set, it will modify the prior between K gaussian distribution in the set, in order to fit the feature better. Therefore, the encoded result of one feature is the matrix of prior value along with posterior, which dimension should be K<sub>x</sub>2. After finishing each feature in the F<sub>i</sub>, we will get the Fisher Vector with dimension of D<sub>x</sub>K<sub>x</sub>2.</br>
 
@@ -168,19 +167,19 @@ Here's the flow:</br>
 <h4>Strength Model</h4>
 <p> Strength model is a kind of fusion method propsed by J. Han, Z. Zhang, N. Cummins, F. Ringeval, and
 B. Schuller, which not only consider the fusion of feature level but also decision level, and shows great improvement in fusion perspective.</br></p>
-<p>Feature Level</br>
+<p><i>Feature Level</i></br>
 Before fusion, we use sub-dictionary concept and generate 3 different kind of encoded features, which are label-based approach, unsupervise approach and supervise approach.</br> 
 - In label-based approach, we know that we have people with cold and no-cold these two kind of label. We first generate the cold-specifc GMM and no-cold-specific GMM and later use the Fisher Vector mentioned above to generate new encoded features.</br>
 Here's the brief flow:</br>
-<img src="/images/Interspeech_2017/StrengthModel_label.png" alt="model-nlor" />
+<img src="/images/Interspeech_2017/StrengthModel_label.png" alt="model-nlor" /></br>
 - In unsupervise approach, we apply kmeans method and categorize the data into two categories which give the data another meaning, like men or women for example. After splitting out the two groups(clusters), we apply the same procedure: first generate GMM for each cluster data and then use Fisher Vectore to encode features.
 Here's the brief flow:</br>
-<img src="/images/Interspeech_2017/StrengthModel_unspv.png" alt="model-nlor" />
-- In supervise approach, it will be a little bit more complicated. The main idea is to find out those data whose connection between its label and characteristic is super low and hard to classify. The way to find out is first put train data into classifier, like SVM, and then put train data as test data to see its prediction result. We could imagine the UAR must be super high due to the testing part is using the train data which the machine have already seen in training process. However, there must exist some data still get a wrong prediction result, and that is what we are looking for! After finding out these data, we base on their prediction result and generate GMM respectively. Finally apply Fisher Vector to get another encoded features.
+<img src="/images/Interspeech_2017/StrengthModel_unspv.png" alt="model-nlor" /></br>
+- In supervise approach, it will be a little bit more complicated. The main idea is to find out those data whose connection between its label and characteristic is super low and hard to classify. The way to find out is first put train data into classifier, like SVM, and then put train data as test data to see its prediction result. We could imagine the UAR must be super high due to the testing part is using the train data which the machine have already seen in training process. However, there must exist some data still get a wrong prediction result, and that is what we are looking for! After finding out these data, we base on their prediction result and generate GMM respectively. Finally apply Fisher Vector to get another encoded features.</br>
 Here's the brief flow:</br>
-<img src="/images/Interspeech_2017/StrengthModel_spv.png" alt="model-nlor" /></p>
+<img src="/images/Interspeech_2017/StrengthModel_spv.png" alt="model-nlor" /></br></p>
 
-<p>Decision Level</br>
+<p><i>Decision Level</i></br>
 In addition to feature level encoded result mentioned above, we still need to obtain decision level outcomes</br>
 Due to different classifiers will provide different perspective of the problem, we choose 4 well-known classifiers, including SVM, adaboost, random forest, and naive bayes. Then take these classifiers' prediction result as the decison level outcome which will be fusion later.</p>
 
@@ -188,8 +187,8 @@ Due to different classifiers will provide different perspective of the problem, 
 In fusion process, we then combine the feature level and decision level as the traning input of our classifier, and hope it will learn differnt perspective and characteristic of data, them predict better result.</p>
 
 <h4>Our Model</h4>
-<p>Combine sub-dictionary features, decision level features and eGeMAPS functional features, and optimize each feature with different classifiers. The result is as follows:
-<img src="/images/Interspeech_2017/Final_result.png" alt="model-nlor" /></p>
+<p>Combine sub-dictionary features, decision level features and eGeMAPS functional features, and optimize each feature with different classifiers. The result is as follows:</br>
+<img src="/images/Interspeech_2017/Final_result.png" alt="model-nlor" /></br></p>
 We can see that with strength model, the performance gets better. Also, combine the sub-dictionary approach and eGeMAPS functional features, we can its convincing result.
 
 
