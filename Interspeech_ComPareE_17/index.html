@@ -166,8 +166,31 @@ Here's the flow:</br>
 <img src="/images/Interspeech_2017/FV.png" alt="model-nlor" />
 
 <h4>Strength Model</h4>
+<p> Strength model is a kind of fusion method propsed by J. Han, Z. Zhang, N. Cummins, F. Ringeval, and
+B. Schuller, which not only consider the fusion of feature level but also decision level, and shows great improvement in fusion perspective.</br></p>
+<p>Feature Level</br>
+Before fusion, we use sub-dictionary concept and generate 3 different kind of encoded features, which are label-based approach, unsupervise approach and supervise approach.</br> 
+- In label-based approach, we know that we have people with cold and no-cold these two kind of label. We first generate the cold-specifc GMM and no-cold-specific GMM and later use the Fisher Vector mentioned above to generate new encoded features.</br>
+Here's the brief flow:</br>
+<img src="/images/Interspeech_2017/StrengthModel_label.png" alt="model-nlor" />
+- In unsupervise approach, we apply kmeans method and categorize the data into two categories which give the data another meaning, like men or women for example. After splitting out the two groups(clusters), we apply the same procedure: first generate GMM for each cluster data and then use Fisher Vectore to encode features.
+Here's the brief flow:</br>
+<img src="/images/Interspeech_2017/StrengthModel_unspv.png" alt="model-nlor" />
+- In supervise approach, it will be a little bit more complicated. The main idea is to find out those data whose connection between its label and characteristic is super low and hard to classify. The way to find out is first put train data into classifier, like SVM, and then put train data as test data to see its prediction result. We could imagine the UAR must be super high due to the testing part is using the train data which the machine have already seen in training process. However, there must exist some data still get a wrong prediction result, and that is what we are looking for! After finding out these data, we base on their prediction result and generate GMM respectively. Finally apply Fisher Vector to get another encoded features.
+Here's the brief flow:</br>
+<img src="/images/Interspeech_2017/StrengthModel_spv.png" alt="model-nlor" /></p>
 
+<p>Decision Level</br>
+In addition to feature level encoded result mentioned above, we still need to obtain decision level outcomes</br>
+Due to different classifiers will provide different perspective of the problem, we choose 4 well-known classifiers, including SVM, adaboost, random forest, and naive bayes. Then take these classifiers' prediction result as the decison level outcome which will be fusion later.</p>
 
+<p>
+In fusion process, we then combine the feature level and decision level as the traning input of our classifier, and hope it will learn differnt perspective and characteristic of data, them predict better result.</p>
+
+<h4>Our Model</h4>
+<p>Combine sub-dictionary features, decision level features and eGeMAPS functional features, and optimize each feature with different classifiers. The result is as follows:
+<img src="/images/Interspeech_2017/Final_result.png" alt="model-nlor" /></p>
+We can see that with strength model, the performance gets better. Also, combine the sub-dictionary approach and eGeMAPS functional features, we can its convincing result.
 
 
 <!-- 
@@ -207,10 +230,16 @@ model, which increase the performance about 2%! The following is what the model 
 <p>This work is done during my Umbo CV internship. Thanks to all the umbots that fulfills my summer internship. Umbo CV really 
 provides a comfortable environment for coders. I truely enjoy the life there. :)
 </p>
+-->
 <h2>Reference:</h2>
-Ronghang Hu, Huazhe Xu, Marcus Rohrbach, Jiashi Feng, Kate Saenko, Trevor Darrell, <a href="http://arxiv.org/abs/1511.04164">Natural Language Object Retrieval</a><br>
-Anna Rohrbach, Marcus Rohrbach, Ronghang Hu, Trevor Darrell, Bernt Schiele, <a href="https://arxiv.org/abs/1511.03745">Grounding of Textual Phrases in Images by Reconstruction </a><br>
-Sahar Kazemzadeh, Vicente Ordonez Mark Matten, Tamara Berg, <a href="http://tamaraberg.com/referitgame/">ReferItGame: Referring to Objects in Photographs of Natural Scenes </a><br> -->
+H. Kaya and A. A. Karpov, <a href = "https://www.researchgate.net/publication/307889338_Fusing_Acoustic_Feature_Representations_for_Computational_Paralinguistics_Tasks" >Fusing acoustic feature representations for computational paralinguistics tasks</a> Interspeech 2016, pp. 2046–2050, 2016.<br>
+J. Han, Z. Zhang, N. Cummins, F. Ringeval, and B. Schuller, <a href = "http://www.sciencedirect.com/science/article/pii/S0262885616302177"> Strength modelling for real-worldautomatic continuous affect recognition from audiovisual signals</a>, Image and Vision Computing, pp. –, 2016.</br>
+F.A.Laleye, E.C.Ezin, and C.Motamed, <a href = "https://link.springer.com/chapter/10.1007/978-3-319-31898-1_4">Speechphonemeclas- sification by intelligent decision-level fusion</a> in Informatics in Control, Automation and Robotics 12th International Conference, ICINCO 2015 Colmar, France, July 21-23, 2015 Revised Selected Papers. Springer, 2016, pp. 63–78.</a></br>
+N. Zhou and J. Fan, <a href = "http://ieeexplore.ieee.org/document/6616553/"> Jointly learning visually correlated dictionaries for large-scale visual recognition applications</a>, IEEE Transactions on Pattern Analysis and Machine Intelligence, vol. 36, no. 4, pp. 715–730, April 2014.</br>
+F. Scalzo, G. Bebis, M. Nicolescu, L. Loss, and A. Tavakkoli, <a href = "https://www.cse.unr.edu/~bebis/FabienICPR08.pdf"> Feature fusion hierarchies for gender classification</a>, in Pattern Recognition, 2008. ICPR 2008. 19th International Conference on IEEE, 2008, pp. 1–4.</br>
+M. Liu, D. Zhang, and D. Shen, <a href = "https://www.ncbi.nlm.nih.gov/pubmed/23417832"> Hierarchical fusion of features and classifier decisions for alzheimer’s disease diagnosis</a>, Human brain mapping, vol. 35, no. 4, pp. 1305–1319, 2014.</br>
+F. Eyben, F. Weninger, F. Gross, and B. Schuller,<a href = "http://doi.acm.org/10.1145/2502081.2502224"> Recent developments in opensmile, the munich open-source multimedia feature extractor</a>, in Proceedings of the 21st ACM International Conference on Multimedia, ser. MM ’13. New York, NY, USA: ACM, 2013, pp. 835–838.</br>
+
 
 </article>
 
