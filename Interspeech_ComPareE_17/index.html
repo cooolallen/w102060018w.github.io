@@ -170,13 +170,13 @@ B. Schuller, which not only consider the fusion of feature level but also decisi
 <p><i>Feature Level</i></br>
 Before fusion, we use sub-dictionary concept and generate 3 different kind of encoded features, which are label-based approach, unsupervise approach and supervise approach.</br> 
 - In label-based approach, we know that we have people with cold and no-cold these two kind of label. We first generate the cold-specifc GMM and no-cold-specific GMM and later use the Fisher Vector mentioned above to generate new encoded features.</br>
-Here's the brief flow:</br>
+<p>Here's the brief flow:</p></br>
 <img src="/images/Interspeech_2017/StrengthModel_label.png" alt="model-nlor" /></br>
-- In unsupervise approach, we apply kmeans method and categorize the data into two categories which give the data another meaning, like men or women for example. After splitting out the two groups(clusters), we apply the same procedure: first generate GMM for each cluster data and then use Fisher Vectore to encode features.
-Here's the brief flow:</br>
+- In unsupervise approach, we apply kmeans method and categorize the data into two categories which give the data another meaning, like men or women for example. After splitting out the two groups(clusters), we apply the same procedure: first generate GMM for each cluster data and then use Fisher Vectore to encode features.</br>
+<p>Here's the brief flow:</p></br>
 <img src="/images/Interspeech_2017/StrengthModel_unspv.png" alt="model-nlor" /></br>
 - In supervise approach, it will be a little bit more complicated. The main idea is to find out those data whose connection between its label and characteristic is super low and hard to classify. The way to find out is first put train data into classifier, like SVM, and then put train data as test data to see its prediction result. We could imagine the UAR must be super high due to the testing part is using the train data which the machine have already seen in training process. However, there must exist some data still get a wrong prediction result, and that is what we are looking for! After finding out these data, we base on their prediction result and generate GMM respectively. Finally apply Fisher Vector to get another encoded features.</br>
-Here's the brief flow:</br>
+<p>Here's the brief flow:</p></br>
 <img src="/images/Interspeech_2017/StrengthModel_spv.png" alt="model-nlor" /></br></p>
 
 <p><i>Decision Level</i></br>
