@@ -164,7 +164,7 @@ When starting encoding our features, F<sub>i</sub>(<sub>NxD</sub>), we will pick
 Here's the flow:</br>
 <img src="/images/Interspeech_2017/FV.png" alt="model-nlor" />
 
-<h4>Strength Model</h4>
+<h2>Strength Modeling</h2>
 <p> Strength model is a kind of fusion method propsed by J. Han, Z. Zhang, N. Cummins, F. Ringeval, and
 B. Schuller, which not only consider the fusion of feature level but also decision level, and shows great improvement in fusion perspective.</br></p>
 <p><i>Feature Level</i></br>
@@ -186,7 +186,7 @@ Due to different classifiers will provide different perspective of the problem, 
 <p>
 In fusion process, we then combine the feature level and decision level as the traning input of our classifier, and hope it will learn differnt perspective and characteristic of data, them predict better result.</p>
 
-<h4>Our Model</h4>
+<h2>Our Approach and Result</h2>
 <p>Combine sub-dictionary features, decision level features and eGeMAPS functional features, and optimize each feature with different classifiers. The result is as follows:</br>
 <img src="/images/Interspeech_2017/Final_result.png" alt="model-nlor" /></br></p>
 We can see that with strength model, the performance gets better. Also, combine the sub-dictionary approach and eGeMAPS functional features, it gets quite a convincing result.
