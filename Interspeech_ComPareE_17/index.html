@@ -140,27 +140,29 @@
 <p>I start working on this challenge around Feb. 2017 with other members in our <a href="http://biic.ee.nthu.edu.tw/">lab</a>. We plan to apply several traditional procedures on detecting audio signal with specific characteristic and try other distinctive approaches to see if they will get better results. In this article, I will give a brief concept of different encoding approach, including BOW, GMM along with Fisher Vector. Also I will show some detail on strength model. Finally show the results we get in this challenge. </p>
 
 <h2>Commonly used encoding approaches</h2>
-<h4>BOW(Bag of Words)</h4>
-<p>Bag of words is an approach which can reduce the dimension of features processed from raw data. The brief concept can be devided into two parts, one is to decide the criteria of categorization and the other is to generate histogram base on the criteria:</br>
-<i>Suppose we have already processed our raw data (audio signal) and get the N<sub>x</sub>D dimension features.</i>  
+<h4>1. BOW(Bag of Words)</h4>
+<p>Bag of words is an approach which can reduce the dimension of features processed from raw data. The brief concept can be devided into two parts, one is to decide the criteria of categorization and the other is to generate histogram base on the criteria:</br><p>
+<p><i>Suppose we have already processed our raw data (audio signal) and get the N<small>x</small>D dimension features.</i></p>  
 <h5>Decide the criteria of cluster-categorization</h5>
+<p>
 Sometimes we also say it's just like making a vocabulary codebook, which can later be used at counting the amount of each word.<br/> 
-The idea started at using <a href="https://www.wikiwand.com/en/K-means_clustering">kmeans</a> method to generate numbers of k centrol points of k-clusters respectively. If nowadays we have mutiple features, F<sub>i</sub>, whose dimension are all N<sub>x</sub>D, we can randomly sample equal amount of rows from F<sub>i</sub> and generate the center point of each cluster base on the information in different features. In this way, the center point we create of each cluster can be more valid on different feature, and let the later categorized-result(histogram) to be more representative and convincing.
+The idea started at using <a href="https://www.wikiwand.com/en/K-means_clustering">kmeans</a> method to generate numbers of k centrol points of k-clusters respectively. If nowadays we have mutiple features, F<sub>i</sub>, whose dimension are all N<small>x</small>D, we can randomly sample equal amount of rows from F<sub>i</sub> and generate the center point of each cluster base on the information in different features. In this way, the center point we create of each cluster can be more valid on different feature, and let the later categorized-result(histogram) to be more representative and convincing.</p>
 <h5>Generate histogram</h5>
-After we got the center point of each cluster, we can categorize our features into different clusters. Each features, F<sub>i</sub>, will have a categorization result, showing the amount of vectors belongs to each cluster.(Due to the dimension of F<sub>i</sub> is N<sub>x</sub>D, we can know that there are totally N vectors with length D in the feature F<sub>i</sub>). Finally, the 'voting' result can be seen as a histogram, which x-axis represents k-cluster and y-axis represents the number of vectors belongs to each cluster.</br>
-The generated histogram is then used to describe the origianl features, which reduce the dimension from N<sub>x</sub>D to 1<sub>x</sub>D. </br>
+<p>
+After we got the center point of each cluster, we can categorize our features into different clusters. Each features, F<sub>i</sub>, will have a categorization result, showing the amount of vectors belongs to each cluster.(Due to the dimension of F<sub>i</sub> is N<small>x</small>D, we can know that there are totally N vectors with length D in the feature F<sub>i</sub>). Finally, the 'voting' result can be seen as a histogram, which x-axis represents k-cluster and y-axis represents the number of vectors belongs to each cluster.</br>
+The generated histogram is then used to describe the origianl features, which reduce the dimension from N<small>x</small>D to 1<small>x</small>D. </br></p>
 <p><b>In short, BOW approach can help us to encode the feature into a more representative while low-dimension result.</b></p>
 </br>
 Here's the flow:</br>
 <img src="/images/Interspeech_2017/BOW.png" alt="model-nlor" /></br>
 
 
-<h4>GMM and Fisher Vector</h4>
-<p>Another much more popularly used encoding aproach is Gaussian Mixture Model(GMM) followed by Fisher Vector. The <a href="https://www.wikiwand.com/en/Mixture_model">GMM</a> is like a more extended version of kmeans-clustering, it represents a cluster not using a center point but a gaussian distribution with correspnding weight. Therefore, with our features, F<sub>i</sub>, in dimension N<sub>x</sub>D, we can expect that we will get the D amount of set of Gaissian Distribution. In each set, there will be the number of K gaussian distribution as we set the number of clusters to be K. We all know that in order to describe a gaussian distribution, we have to specify its mean and variance, so after generating the Gaussian Mixture Model of our k-cluster, we will have a matrix of Mean<sub>DxK</sub> and a matrix of Covarience<sub>DxK</sub>. Additionally, to describe the relationship between k gaussian distribution, we will have the posterior value and a matrix of Prior<sub>Kx1</sub>(which could also be considered as the weight between k gaussian distribution).</br></p>
+<h4>2. GMM and Fisher Vector</h4>
+<p>Another much more popularly used encoding aproach is Gaussian Mixture Model(GMM) followed by Fisher Vector. The <a href="https://www.wikiwand.com/en/Mixture_model">GMM</a> is like a more extended version of kmeans-clustering, it represents a cluster not using a center point but a gaussian distribution with correspnding weight. Therefore, with our features, F<sub>i</sub>, in dimension N<small>x</small>D, we can expect that we will get the D amount of set of Gaissian Distribution. In each set, there will be the number of K gaussian distribution as we set the number of clusters to be K. We all know that in order to describe a gaussian distribution, we have to specify its mean and variance, so after generating the Gaussian Mixture Model of our k-cluster, we will have a matrix of Mean<sub>DxK</sub> and a matrix of Covarience<sub>DxK</sub>. Additionally, to describe the relationship between k gaussian distribution, we will have the posterior value and a matrix of Prior<sub>Kx1</sub>(which could also be considered as the weight between k gaussian distribution).</br></p>
 <p>After we build our GMM, we can now encode our features, F<sub>i</sub>, base on the Mean<sub>DxK</sub>,Covarience<sub>DxK</sub>, posterier, and Prior<sub>Kx1</sub>. The encoded result is what we called Fisher Vector.(a special case of general <a href = "https://www.wikiwand.com/en/Fisher_kernel">Fisher Kernel</a>)</br>
-When starting encoding our features, F<sub>i</sub>(<sub>NxD</sub>), we will pick out one feature(N<sub>x</sub>1) at each time, and see which set of gaussian distribution is more similar to itself. After finding out that set, it will modify the prior between K gaussian distribution in the set, in order to fit the feature better. Therefore, the encoded result of one feature is the matrix of prior value along with posterior, which dimension should be K<sub>x</sub>2. After finishing each feature in the F<sub>i</sub>, we will get the Fisher Vector with dimension of D<sub>x</sub>K<sub>x</sub>2.</br>
+When starting encoding our features, F<sub>i<sub>NxD</sub></sub>, we will pick out one feature(N<small>x</small>1) at each time, and see which set of gaussian distribution is more similar to itself. After finding out that set, it will modify the prior between K gaussian distribution in the set, in order to fit the feature better. Therefore, the encoded result of one feature is the matrix of prior value along with posterior, which dimension should be K<sub>x</sub>2. After finishing each feature in the F<sub>i</sub>, we will get the Fisher Vector with dimension of D<small>x</small>K<small>x</small>2.</br>
 
-<p>The Fisher Vector is then used to describe the origianl features. We can see that the original dimension is N<sub>x</sub>D while the encoded result is D<sub>x</sub>K<sub>x</sub>2, usually K will smaller than N, so the encoded reesult will decrease the dimension and since the representation of gaussian distrution is more complicate, use it as the description of a cluster will be more convincing. That is why Fisher Vector is used more popularly when encoding the features.</br></p>
+<p>The Fisher Vector is then used to describe the origianl features. We can see that the original dimension is N<small>x</small>D while the encoded result is D<small>x</small>K<small>x</small>2, usually K will smaller than N, so the encoded reesult will decrease the dimension and since the representation of gaussian distrution is more complicate, use it as the description of a cluster will be more convincing. That is why Fisher Vector is used more popularly when encoding the features.</br></p>
 Here's the flow:</br>
 <img src="/images/Interspeech_2017/FV.png" alt="model-nlor" />
 
@@ -169,13 +171,13 @@ Here's the flow:</br>
 B. Schuller, which not only consider the fusion of feature level but also decision level, and shows great improvement in fusion perspective.</br></p>
 <p><i>Feature Level</i></br>
 Before fusion, we use sub-dictionary concept and generate 3 different kind of encoded features, which are label-based approach, unsupervise approach and supervise approach.</br> 
-- In label-based approach, we know that we have people with cold and no-cold these two kind of label. We first generate the cold-specifc GMM and no-cold-specific GMM and later use the Fisher Vector mentioned above to generate new encoded features.</br>
+<b>- In label-based approach</b>, we know that we have people with cold and no-cold these two kind of label. We first generate the cold-specifc GMM and no-cold-specific GMM and later use the Fisher Vector mentioned above to generate new encoded features.</br>
 <p>Here's the brief flow:</p></br>
 <img src="/images/Interspeech_2017/StrengthModel_label.png" alt="model-nlor" /></br>
-- In unsupervise approach, we apply kmeans method and categorize the data into two categories which give the data another meaning, like men or women for example. After splitting out the two groups(clusters), we apply the same procedure: first generate GMM for each cluster data and then use Fisher Vectore to encode features.</br>
+<b>- In unsupervise approach</b>, we apply kmeans method and categorize the data into two categories which give the data another meaning, like men or women for example. After splitting out the two groups(clusters), we apply the same procedure: first generate GMM for each cluster data and then use Fisher Vectore to encode features.</br>
 <p>Here's the brief flow:</p></br>
 <img src="/images/Interspeech_2017/StrengthModel_unspv.png" alt="model-nlor" /></br>
-- In supervise approach, it will be a little bit more complicated. The main idea is to find out those data whose connection between its label and characteristic is super low and hard to classify. The way to find out is first put train data into classifier, like SVM, and then put train data as test data to see its prediction result. We could imagine the UAR must be super high due to the testing part is using the train data which the machine have already seen in training process. However, there must exist some data still get a wrong prediction result, and that is what we are looking for! After finding out these data, we base on their prediction result and generate GMM respectively. Finally apply Fisher Vector to get another encoded features.</br>
+<b>- In supervise approach</b>, it will be a little bit more complicated. The main idea is to find out those data whose connection between its label and characteristic is super low and hard to classify. The way to find out is first put train data into classifier, like SVM, and then put train data as test data to see its prediction result. We could imagine the UAR must be super high due to the testing part is using the train data which the machine have already seen in training process. However, there must exist some data still get a wrong prediction result, and that is what we are looking for! After finding out these data, we base on their prediction result and generate GMM respectively. Finally apply Fisher Vector to get another encoded features.</br>
 <p>Here's the brief flow:</p></br>
 <img src="/images/Interspeech_2017/StrengthModel_spv.png" alt="model-nlor" /></br></p>
 
@@ -183,7 +185,7 @@ Before fusion, we use sub-dictionary concept and generate 3 different kind of en
 In addition to feature level encoded result mentioned above, we still need to obtain decision level outcomes</br>
 Due to different classifiers will provide different perspective of the problem, we choose 4 well-known classifiers, including SVM, adaboost, random forest, and naive bayes. Then take these classifiers' prediction result as the decison level outcome which will be fusion later.</p>
 
-<p>
+<p><i>Fusion Process</i></br>
 In fusion process, we then combine the feature level and decision level as the traning input of our classifier, and hope it will learn differnt perspective and characteristic of data, them predict better result.</p>
 
 <h2>Our Approach and Result</h2>
@@ -238,7 +240,7 @@ N. Zhou and J. Fan, <a href = "http://ieeexplore.ieee.org/document/6616553/"> Jo
 F. Scalzo, G. Bebis, M. Nicolescu, L. Loss, and A. Tavakkoli, <a href = "https://www.cse.unr.edu/~bebis/FabienICPR08.pdf"> Feature fusion hierarchies for gender classification</a>, in Pattern Recognition, 2008. ICPR 2008. 19th International Conference on IEEE, 2008, pp. 1–4.</br>
 M. Liu, D. Zhang, and D. Shen, <a href = "https://www.ncbi.nlm.nih.gov/pubmed/23417832"> Hierarchical fusion of features and classifier decisions for alzheimer’s disease diagnosis</a>, Human brain mapping, vol. 35, no. 4, pp. 1305–1319, 2014.</br>
 F. Eyben, F. Weninger, F. Gross, and B. Schuller,<a href = "http://doi.acm.org/10.1145/2502081.2502224"> Recent developments in opensmile, the munich open-source multimedia feature extractor</a>, in Proceedings of the 21st ACM International Conference on Multimedia, ser. MM ’13. New York, NY, USA: ACM, 2013, pp. 835–838.</br>
-Chia-Lung Wu1, Hsiang-Ping Hsu1, Xian-Feng Liao2, Yu Tsao2, Hao-Chun Yang3, Jen-Lin Li3, Chi-Chun Lee3, Hung-Shin Lee4 and Hsin-Min Wang4, "Automatic Detection of Speech under Cold using Discriminative Autoencoders and Strength Modeling with Multiple Sub-Dictionary Generation"</br>
+Chia-Lung Wu, Hsiang-Ping Hsu, Xian-Feng Liao, Yu Tsao, Hao-Chun Yang, Jen-Lin Li, Chi-Chun Lee, Hung-Shin Lee and Hsin-Min Wang, "Automatic Detection of Speech under Cold using Discriminative Autoencoders and Strength Modeling with Multiple Sub-Dictionary Generation"</br>
 
 
 </article>
@@ -266,7 +268,7 @@ Chia-Lung Wu1, Hsiang-Ping Hsu1, Xian-Feng Liao2, Yu Tsao2, Hao-Chun Yang3, Jen-
   <div class="measure">
     <small>
       Powered by <a href="https://jekyllrb.com/">Jekyll</a> using <a href="https://pixyll.com/">Pixyll</a> theme. Hosted on <a href="https://pages.github.com/">Github Pages</a>. <br>
-      © Yuan-Hong Liao
+      © Huiting Hong
     </small>
   </div>
 </footer>
